@@ -1,0 +1,41 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after{
+    box-sizing: inherit;
+}
+
+
+#tweet {
+    border: solid red 5px;
+}
+
+#mediaHandle {
+    margin-left: 300px;
+}
+
+#tweet p{
+    margin-left: 300px;
+}
+
+#tweet nav ul{
+    margin-left: 300px;
+}
+
+/* Targeting Name */
+#mediaHandle span:first-child {
+    color : #000;
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Targeting Metadata */
+#mediaHandle span:last-child {
+    margin-left: 4px;
+    color : #71767b;
+    font-family: sans-serif;
+    font-size: 15px;
+    
+}
