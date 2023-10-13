@@ -7,8 +7,13 @@ html {
 }
 
 
+
 #tweet {
+    width : 67%;
     border: solid red 5px;
+    margin: 100px;
+    margin-right:126px
+    
 }
 
 #mediaHandle {
@@ -17,6 +22,16 @@ html {
 
 #tweet p{
     margin-left: 300px;
+}
+/* Targeting Message */
+
+#tweet p {
+    /* margin-top: 2px; */
+    color: #0f1419;
+    width: 530px;
+    font-family: sans-serif;
+    font-size: 15px;
+    margin-top: 2px;
 }
 
 #tweet nav ul{
@@ -29,26 +44,25 @@ html {
     font-family: sans-serif;
     font-size: 15px;
     font-weight: bold;
-    padding-right: 4px;
-    padding-bottom: 2px;
 }
 
 /* Targeting Metadata */
 #mediaHandle span:last-child {
-    /* margin-left: 4px; */
+    margin-left: 4px;
     color : #71767b;
     font-family: sans-serif;
     font-size: 15px;
-    padding-bottom: 2px;
 
 }
 
-/* Targeting Message */
 
-#tweet p {
-    /* margin-top: 2px; */
-    color: #0f1419;
-    font-family: sans-serif;
-    font-size: 15px;
-    padding-bottom: 12px;
+/* Intermediate Step to remove UL list default icons */
+
+#tweet nav ul {
+    list-style-type: none;
+    margin-left : 300px;
+    padding : 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
 }
