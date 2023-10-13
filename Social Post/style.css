@@ -58,11 +58,30 @@ html {
 
 /* Intermediate Step to remove UL list default icons */
 
-#tweet nav ul {
+#actionRow {
+    max-width: 425px;
     list-style-type: none;
     margin-left : 300px;
     padding : 0px;
     display: flex;
     flex-direction: row;
     justify-content: start;
+    align-items: center;
+    gap : 2rem;
 }
+
+/* Handling the images */
+
+#actionRow img{
+    width : 16px;
+    margin-right: 12px;
+}
+
+/* Handling the verbiage of the image */
+
+#actionRow span{
+    color: #536471;
+    font-size: 13px;
+}
+
+
