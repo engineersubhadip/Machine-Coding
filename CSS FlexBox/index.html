@@ -3,76 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Flex Box</title>
+
+    <style>
+        .container {
+            border: 2px solid black;
+            /* padding:5px; */
+            /* height: 100vh; */
+            display: flex;
+            flex-wrap: wrap;
+            /* align-items: stretch; */
+            gap:5px;
+        }
+/* 
+        .box {
+            height: 100px;
+            width: 100px;
+        } */
+
+        .title{
+            border: 2px solid red;
+        }
+
+        .content {
+            border: 2px solid blue;
+        }
+
+        .box1 {
+            background-color: greenyellow;
+            /* flex-grow: 1; */
+        }
+
+        .box2 {
+            background-color: blueviolet;
+            flex-grow: 1;
+        }
+
+        .box3 {
+            background-color: tomato;
+        }
+
+        .box4 {
+            background-color: yellow;
+        }
+
+        .box5 {
+            background-color: blue;
+        }
+
+        .box6 {
+            background-color: red;
+        }
+    </style>
 </head>
-<style>
-    html {
-        box-sizing: border-box;
-    }
-
-    *, *::before, *::after {
-        box-sizing: inherit;
-    }
-    .image img{
-        height :100px;
-        width: 100px;
-    }
-    .container {
-        height: 100vh;
-        background-color: lightblue;
-        display: flex;
-        flex-direction: row;
-        gap:10px;
-        /* justify-content: space-evenly;
-        align-items: end; */
-    }
-
-    .box {
-        width: 200px;
-        height: 100px;
-        text-align: center;
-        font-size: larger;
-    }
-
-    .box1 {
-        background-color: burlywood;
-    }
-
-    .box2 {
-        background-color: slateblue;
-    }
-
-    .box3 {
-        background-color: red;
-    }
-
-    .box4 {
-        background-color: green;
-    }
-
-    .box5{
-        background-color: plum;
-    }
-
-    .box6{
-        background-color: yellow;
-    }
-
-
-</style>
 <body>
-
     <div class="container">
-        <div class="image">
-            <img src="data:image/png;base64,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" alt="Samurai">
-        </div>
         <div class="box box1">Box1</div>
         <div class="box box2">Box2</div>
-        <div class="box box3">Box3</div>
+        <!-- <div class="box box3">Box3</div>
         <div class="box box4">Box4</div>
-        <!-- <div class="box box5">Box5</div>
+        <div class="box box5">Box5</div>
         <div class="box box6">Box6</div> -->
+        <!-- <div class="title">
+            <span>
+                Jason Mamoa
+            </span>
+            <span>
+                @Khal23 25.09
+            </span>
+        </div>
+        <div class="content">
+            <p>Run a marathon in under two hours. Impossible? Not for Nike (@Nike). Last May, 
+                company brought three of the best runners on the planet together in Italy to set a new record in a closed-door marathon 
+                that was broadcast live on Twitter.
+            </p>
+        </div> -->
     </div>
-    
 </body>
 </html>

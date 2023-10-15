@@ -1,0 +1,56 @@
+html {
+      box-sizing: border-box;
+}
+
+*, *::before, *::after {
+      box-sizing: inherit;
+}
+
+.holy {
+      border: 2px solid black;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+}
+
+.header {
+      height:60px;
+      background-color: red;
+}
+
+.mid {
+      display: flex;
+      height: 100%;
+      border: 2px solid black;
+      gap: 5px;
+}
+
+.box1{
+      display: flex;
+      border: 2px solid black;
+      gap: 20px;
+      width: 100%;
+}
+
+.navigation {
+      background-color: orange;
+      border: 2px solid black;
+      width: 15%;
+}
+
+.main {
+      background-color: greenyellow;
+      border: 2px solid black;
+      width: 100%;
+}
+
+.sidebar {
+      background-color: aqua;
+      border: 2px solid black;
+      width: 15%;
+}
+
+.footer {
+      height:100px;
+      background-color: gray;
+}
