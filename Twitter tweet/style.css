@@ -35,6 +35,7 @@ html {
 
 .topinfo {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     gap:2px;
 }
@@ -43,6 +44,7 @@ html {
 
 .topinfo .header {
     display: flex;
+    flex-wrap: wrap;
     gap:4px;
     justify-content: center;
     align-items: center;
@@ -59,6 +61,7 @@ html {
 
 .actionrow {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -67,6 +70,7 @@ html {
 
 .comment {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap:12px;
     justify-content: center;
@@ -80,6 +84,7 @@ html {
 /* FlexBox on Re-Tweet */
 .retweet {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap:12px;
     justify-content: center;
@@ -93,6 +98,7 @@ html {
 /* FlexBox on Likes */
 .favourite {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap:12px;
     justify-content: center;
@@ -161,7 +167,4 @@ html {
     height:16px;
 }
 
-.actionrow .widget .commentpic {
-
-}
 
