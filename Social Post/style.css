@@ -2,86 +2,76 @@ html {
     box-sizing: border-box;
 }
 
-*, *:before, *:after{
+*, *::before, *::after {
     box-sizing: inherit;
 }
 
+.container {
+    background: #eee;
+    width: 600px;
+    height: 100px;
+    margin: 12px;
+    border: 3px solid #000;
+    padding: 12px;
+}
 
+/* .thumbnail {
+    width: 48px;
+    border: 2px solid blue;
+} */
 
-#tweet {
-    width : 67%;
-    border: solid red 5px;
-    margin: 100px;
-    margin-right:126px
+/* Applying border on Name - Line 16 to 18 just for experimentation */
+/* .name {
+    border: 2px red solid;
+}
+
+.name {
+    margin-left: 12px;
     
 }
-
-#mediaHandle {
-    margin-left: 300px;
-}
-
-#tweet p{
-    margin-left: 300px;
-}
-/* Targeting Message */
-
-#tweet p {
-    /* margin-top: 2px; */
-    color: #0f1419;
-    width: 530px;
-    font-family: sans-serif;
-    font-size: 15px;
-    margin-top: 2px;
-}
-
-#tweet nav ul{
-    margin-left: 300px;
-}
-
-/* Targeting Name */
-#mediaHandle span:first-child {
-    color : #000;
+.name span:first-child {
+    color: #000;
     font-family: sans-serif;
     font-size: 15px;
     font-weight: bold;
 }
 
-/* Targeting Metadata */
-#mediaHandle span:last-child {
+.name span:last-child {
     margin-left: 4px;
-    color : #71767b;
+    color: #71767b;
     font-family: sans-serif;
     font-size: 15px;
+} */
 
+/* Applying border on Message- Line 40-42 just for experimentation*/
+
+/* .message {
+    border: 2px solid greenyellow;
 }
 
+.message {
+    margin-left: 60px;
+    color: #0f1419;
+    font-family: sans-serif;
+    font-size: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+} */
 
-/* Intermediate Step to remove UL list default icons */
+/* Application of flex box on container */
 
-#actionRow {
-    max-width: 425px;
+.container {
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+    /* align-content: flex-start; */
+}
+
+/* .actionrow {
     list-style-type: none;
-    margin-left : 300px;
-    padding : 0px;
+    margin: 0;
     display: flex;
     flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap : 2rem;
-}
-
-/* Handling the images */
-
-#actionRow img{
-    width : 16px;
-    margin-right: 12px;
-}
-
-/* Handling the verbiage of the image */
-
-#actionRow span{
-    color: #536471;
-    font-size: 13px;
-}
-
-
+    flex-wrap: wrap;
+    justify-content: center;
+} */

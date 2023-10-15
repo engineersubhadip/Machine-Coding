@@ -1,0 +1,110 @@
+html {
+    box-sizing: border-box;
+}
+
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Boiler Plate */
+
+.container {
+    background: #eee;
+    width: 500px;
+    height:300px;
+    margin: 50px auto 0;
+    padding: 10px;
+    border: 3px solid #000;
+}
+
+.item1 {
+    background: red;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item2 {
+    background: greenyellow;
+    font-size: 50px;
+    height: 100px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item3 {
+    background: violet;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item4 {
+    background: burlywood;
+    font-size: 10px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item5 {
+    background: darkgreen;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item6 {
+    background: darkgray;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item7 {
+    background: darkturquoise;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item8 {
+    background: darksalmon;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+.item9 {
+    background: lightcyan;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+
+.item10 {
+    background: darkseagreen;
+    font-size: 20px;
+    padding:10px;
+    text-align: center;
+    margin: 10px;
+}
+/* Flex Box Implementation */
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    align-items: baseline;
+}
+
+
