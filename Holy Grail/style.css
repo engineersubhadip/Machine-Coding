@@ -20,34 +20,23 @@ html {
 
 .mid {
       display: flex;
+      flex-direction: row;
       height: 100%;
-      border: 2px solid black;
-      gap: 5px;
-}
-
-.box1{
-      display: flex;
-      border: 2px solid black;
-      gap: 20px;
-      width: 100%;
 }
 
 .navigation {
+      width: 100px;
       background-color: orange;
-      border: 2px solid black;
-      width: 15%;
 }
 
 .main {
       background-color: greenyellow;
-      border: 2px solid black;
-      width: 100%;
+      flex:1;
 }
 
 .sidebar {
+      width: 100px;
       background-color: aqua;
-      border: 2px solid black;
-      width: 15%;
 }
 
 .footer {
