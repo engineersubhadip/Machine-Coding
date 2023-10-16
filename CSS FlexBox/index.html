@@ -6,13 +6,26 @@
     <title>Flex Box</title>
 
     <style>
+        .parent{
+            margin:auto;
+            border:2px solid red;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* align-items: ; */
+            height:500px;
+            width:400px;
+        }
         .container {
+            /* flex:1; */
             border: 2px solid black;
             /* padding:5px; */
             /* height: 100vh; */
             display: flex;
+            flex-direction: row;
+            justify-content: center;
             flex-wrap: wrap;
-            /* align-items: stretch; */
+            align-items: start;
             gap:5px;
         }
 /* 
@@ -20,7 +33,11 @@
             height: 100px;
             width: 100px;
         } */
-
+        .child{
+            border: 2px blue solid;
+            display: flex;
+            flex-grow: 1;
+        }
         .title{
             border: 2px solid red;
         }
@@ -31,12 +48,12 @@
 
         .box1 {
             background-color: greenyellow;
-            /* flex-grow: 1; */
+            flex-grow: 1;
         }
 
         .box2 {
             background-color: blueviolet;
-            flex-grow: 1;
+            flex-grow: 2;
         }
 
         .box3 {
@@ -57,27 +74,32 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="box box1">Box1</div>
-        <div class="box box2">Box2</div>
-        <!-- <div class="box box3">Box3</div>
-        <div class="box box4">Box4</div>
-        <div class="box box5">Box5</div>
-        <div class="box box6">Box6</div> -->
-        <!-- <div class="title">
-            <span>
-                Jason Mamoa
-            </span>
-            <span>
-                @Khal23 25.09
-            </span>
+    <section class="parent">
+        <!-- This is real -->
+        <div class="container">
+            <div class="child">
+                <div class="box box1">Box1</div>
+                <div class="box box2">Box2</div>
+            </div>
+            <!-- <div class="box box3">Box3</div>
+            <div class="box box4">Box4</div>
+            <div class="box box5">Box5</div>
+            <div class="box box6">Box6</div> -->
+            <!-- <div class="title">
+                <span>
+                    Jason Mamoa
+                </span>
+                <span>
+                    @Khal23 25.09
+                </span>
+            </div>
+            <div class="content">
+                <p>Run a marathon in under two hours. Impossible? Not for Nike (@Nike). Last May, 
+                    company brought three of the best runners on the planet together in Italy to set a new record in a closed-door marathon 
+                    that was broadcast live on Twitter.
+                </p>
+            </div> -->
         </div>
-        <div class="content">
-            <p>Run a marathon in under two hours. Impossible? Not for Nike (@Nike). Last May, 
-                company brought three of the best runners on the planet together in Italy to set a new record in a closed-door marathon 
-                that was broadcast live on Twitter.
-            </p>
-        </div> -->
-    </div>
+    </section>
 </body>
 </html>
