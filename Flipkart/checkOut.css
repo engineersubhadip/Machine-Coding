@@ -1,0 +1,294 @@
+html {
+	box-sizing: border-box;
+}
+
+*, *::before, *::after {
+	box-sizing: inherit;
+}
+
+body {
+	margin:0;
+	padding:0;
+}
+
+/* ! NavBar CSS */
+
+#header {
+	position: sticky;
+	top:0;
+	z-index: 2;
+	align-self: flex-start;
+}
+
+.navbarWrapper {
+	background-color: #2874f0;
+	height:4rem;
+	position: sticky;
+}
+
+.logo{
+	flex-basis: 20%;
+	
+	justify-content: flex-end;
+}
+
+.logo img{
+	max-width:75px;
+}
+
+.form-group {
+	
+	flex-basis: 60%;
+	margin-left:12px;
+}
+
+.form-group .form-control {
+	max-width: 475px;
+}
+
+.loginbtn{
+	flex-basis: 20%;
+	justify-content: flex-start;
+}
+
+.loginbtn .loginWord {
+	width: 120.68px;
+	height: 30.67px;
+	background-color: white;
+}
+
+/* ? Main CheckOut Card */
+
+.checkoutCard {
+	padding: 8px;
+}
+
+/* ! Left Panel CSS */
+
+.checkoutCard-leftPanel {
+	border: 1px solid black;
+	flex-basis: 70%;
+}
+
+.headerOne {
+	margin-top: 2rem;
+	width:100%;
+	height: 100px;
+	padding: 12px 16px;
+	border: 1px solid black;
+}
+
+.headerOne .flipkartOne {
+	flex-basis: 50%;
+	justify-content: center;
+}
+
+.headerOne .grocery {
+	flex-basis: 50%;
+	justify-content: center;
+}
+
+.headerTwo {
+	margin-top: 1rem;
+	padding: 12px 16px;
+	border: 1px solid gray;
+}
+
+.fromSavedAddressWord {
+	color:black
+}
+
+.fromSavedAddressWord span {
+	color:gray;
+}
+
+.enterPincodeWord {
+	width:165px;
+	height: 37px;
+	padding:10px 16px;
+	border: 1px solid black;
+}
+
+.orderDetails {
+	margin-top: 1rem;
+	padding: 24px;
+	border: 1px solid skyblue;
+}
+
+.orderDetailsSummary {
+	margin-bottom: 10px;
+}
+
+.orderDetailsSummaryImage {
+	flex-basis: 15%;
+}
+
+.orderDetailsSummaryImage img {
+	width:100%;
+}
+
+.orderDetailsSummaryDescription {
+	flex-basis: 55%;
+	padding-top:0;
+	padding-left: 24px;
+	padding-right: 24px;
+	padding-bottom: 12px;
+}
+
+.orderDetailsSummaryDescription .name p span {
+	color:gray;
+}
+
+.orderDetailsSummaryDescription .sellername span {
+	color:gray;
+}
+
+.orderDetailsSummaryDescription .price {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.orderDetailsSummaryDescription .price span span {
+	text-decoration: line-through;
+	color:gray;
+	font-weight: normal;
+}
+
+.orderDetailsSummaryDelivery {
+	flex-basis: 30%;
+}
+
+.orderDetailsSummaryDelivery .deliveryDate {
+	font-size: 14px;
+}
+
+.orderDetailsSummaryDelivery .deliveryDate p span {
+	text-decoration: line-through;
+	color:gray;
+
+}
+
+.orderDetailsSummaryDelivery .deliveryDate p .freeTag {
+	text-decoration: none;
+	color:green;
+}
+
+/* ! Second Row */
+
+.extendedGurantee {
+	margin-top: 10px;
+	margin-bottom: 16px;
+	padding: 16px;
+	background-color: #dfeafd;
+}
+
+.extendedGurantee .heading {
+	margin-bottom: 16px;
+}
+
+.extendedGutanteeSummaryDescriptionHeaderTwo p {
+	font-weight: bold;
+}
+
+.extendedGutanteeSummaryDescriptionHeaderTwo p span {
+	text-decoration: line-through;
+	font-size: 14px;
+	color: gray;
+}
+
+.extendedGutanteeSummaryDescriptionHeaderTwo p span:last-child {
+	color:green;
+	text-decoration: none;
+} 
+
+.extendedGutanteeSummaryImage {
+	flex-basis: 8.5%;
+	margin-right: 24px;
+}
+
+.extendedGutanteeSummaryImage img {
+	width: 100%;
+	height:72px;
+}
+
+.extendedGutanteeSummaryDescription {
+	flex-basis: 70%;
+}
+
+.addItemBtn {
+	flex-basis: 21.5%;
+}
+
+/* ! Header Three */
+
+.saveforlater {
+	border: 1px solid black;
+	margin-right: 25px;
+}
+
+.remove {
+	border: 1px solid black;
+	margin-right: 25px;
+}
+
+/* ! Right Panel */
+
+.checkoutCard-rightPanel {
+	align-self: flex-start;
+	flex-basis: 35%;
+	margin-top:2rem;
+	margin-left: 16px;
+	border: 1px solid black;
+	justify-content: flex-start;
+
+	position: sticky;
+	top: 71px;
+}
+
+.checkoutCard-rightPanel .sectionOne {
+	color:gray;
+	padding:13px 24px;
+
+}
+
+hr {
+	margin: 0;
+}
+
+.checkoutCard-rightPanel .sectionTwo {
+	padding: 13px 24px;
+}
+
+.checkoutCard-rightPanel .sectionTwo .subOne {
+	margin-top: 1rem;
+}
+
+.checkoutCard-rightPanel .sectionTwo .subTwo{
+	margin-top: 1rem;
+}
+
+.checkoutCard-rightPanel .sectionTwo .subTwo div:last-child {
+	color:green;
+
+}
+
+.checkoutCard-rightPanel .sectionTwo .subThree {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.checkoutCard-rightPanel .sectionTwo .subThree div:last-child {
+	text-decoration: line-through;
+	color:gray;
+}
+
+.checkoutCard-rightPanel .sectionTwo .subThree div:last-child span {
+	text-decoration: none;
+	color: green;
+}
+
+.checkoutCard-rightPanel .sectionThree {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+	padding: 13px 24px;
+}
