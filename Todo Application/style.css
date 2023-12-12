@@ -23,3 +23,35 @@ body{
 /* .todo-input input{
       width:100%;
 } */
+
+/* List of Todo's */
+
+.todo-header{
+      margin-top: 2rem;
+}
+
+.todo-header > div{
+      font-weight: bold;
+      font-size: 1.5rem;
+}
+
+.todo-item{
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+}
+
+.todo-no{
+      flex-basis: 4%;
+}
+
+.todo-detail{
+      flex-basis: 55%;
+}
+
+.todo-status{
+      flex-basis: 10%;
+}
+
+.todo-action{
+      flex-basis: 15%;
+}
