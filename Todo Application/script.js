@@ -1,6 +1,6 @@
 let todoDataSection = document.querySelector(".todo-data");
 
-let todoArr = [];
+let globalCounter = 0;
 
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
@@ -17,7 +17,7 @@ function addTodo(todoData){
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
 
-      let childCount = todoArr.length; // To get the number of Children of todoSection
+      let childCount = globalCounter // To get the number of Children of todoSection
       todoNoDiv.textContent = childCount; 
 
       todoItemDiv.appendChild(todoNoDiv);
@@ -66,7 +66,9 @@ function addTodo(todoData){
       function removeTodo(){
             let rowNumberDeleted = rowDiv.querySelector(".todo-no");
             rowDiv.remove();
+            globalCounter-=1;
             console.log("I have removed",rowNumberDeleted.textContent);
+            console.log("The number of records left",globalCounter);
             
             
       };
@@ -97,7 +99,7 @@ let inputBoxUserInput = todoInputBar.value;
 saveTodo.addEventListener("click",function getTextAndAddTodo(){
       let inputBoxUserInput = todoInputBar.value;
       if (inputBoxUserInput.length !=0){
-            todoArr.push(inputBoxUserInput);
+            globalCounter += 1;
             addTodo(inputBoxUserInput);
       }
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
