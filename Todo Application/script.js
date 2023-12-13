@@ -62,46 +62,39 @@ function addTodo(todoData){
       todoDataSection.appendChild(rowDiv);
 
       // Handling the Scenario where I am adding event listener on click of Delete Button.
-
-      function removeTodo(){
-            let rowNumberDeleted = document.querySelector(".row");
-            rowDiv.remove();
-            globalCounter-=1;
-            // console.log("I have removed",rowNumberDeleted.textContent);
-            // console.log("The number of records left",globalCounter); 
-            updateSerialNumbers();
-            
-      };
+      // I am going to call the remove() when the user clicks on "delete" button
 
       delBtn.addEventListener("click",removeTodo);
       
 };
 
-function updateSerialNumbers(){
-      let allTodoItemBlock = document.querySelectorAll(".todo-no");
-      console.log(allTodoItemBlock);
-      console.log(typeof allTodoItemBlock);
+function removeTodo(event){
+      let rowToDelete =  event.target.parentElement.parentElement.parentElement;
+      globalCounter-=1;
+      rowToDelete.remove();
+      updateRecords();
+};
 
-      // Type of allTodoItemBlock is a node list.
-      // We have to convert them into a list.
+// Once we have removed our row, we must re-render our whole todo list. So, that we get proper serial numbers
 
-      let newArr = Array.from(allTodoItemBlock);
+function updateRecords(){
+      let todoNo = document.querySelectorAll(".todo-no");
 
-      // This array will also return us the "No" in the 0th position
-      let resultant = newArr.slice(1);
+      // The above will give us an Node List of all the already todo-no in the DOM.
+      // We have to convert the node-list to list.
 
-      console.log(resultant);
-      console.log(globalCounter);
+      let todoNoArr = Array.from(todoNo);
+
+      // We will remove the first element from the array, as it contains the element "No." because "No." also has a class ".todo-no";
+
+      let resultArr = todoNoArr.splice(1);
+
 
       for (let val=0; val < globalCounter; val++){
-            // console.log(resultant[val].textContent);
-            resultant[val].textContent = val+1
+            resultArr[val].textContent = val+1;
       }
-      // for (let val = 1; val <= globalCounter; val++){
-      //       allTodoItemBlock[val-1].textContent = val;
-      // }
-      
 }
+
 
 let todoInputBar = document.getElementById("todo-input-bar");
 
@@ -130,5 +123,4 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
       saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
 });
-
 
