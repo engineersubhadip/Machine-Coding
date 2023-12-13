@@ -64,11 +64,11 @@ function addTodo(todoData){
       // Handling the Scenario where I am adding event listener on click of Delete Button.
 
       function removeTodo(){
-            let rowNumberDeleted = rowDiv.querySelector(".todo-no");
+            let rowNumberDeleted = document.querySelector(".row");
             rowDiv.remove();
             globalCounter-=1;
-            console.log("I have removed",rowNumberDeleted.textContent);
-            console.log("The number of records left",globalCounter); 
+            // console.log("I have removed",rowNumberDeleted.textContent);
+            // console.log("The number of records left",globalCounter); 
             updateSerialNumbers();
             
       };
