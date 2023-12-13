@@ -1,5 +1,7 @@
 let todoDataSection = document.querySelector(".todo-data");
 
+let todoArr = [];
+
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
       rowDiv.classList.add("row");
@@ -15,7 +17,7 @@ function addTodo(todoData){
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
 
-      let childCount = todoDataSection.childElementCount-1; // To get the number of Children of todoSection
+      let childCount = todoArr.length+1; // To get the number of Children of todoSection
       todoNoDiv.textContent = childCount; 
 
       todoItemDiv.appendChild(todoNoDiv);
@@ -83,10 +85,11 @@ let inputBoxUserInput = todoInputBar.value;
 saveTodo.addEventListener("click",function getTextAndAddTodo(){
       let inputBoxUserInput = todoInputBar.value;
       if (inputBoxUserInput.length !=0){
+            todoArr.push(inputBoxUserInput);
             addTodo(inputBoxUserInput);
       }
-      todoInputBar.value = "";
-      saveTodo.classList.add("disabled") ; //This signifies that after adding the todo our search bar gets empty
+      todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
+      saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
 })
 
 
