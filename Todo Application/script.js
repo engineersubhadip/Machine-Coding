@@ -14,7 +14,9 @@ function addTodo(todoData){
 
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
-      todoNoDiv.textContent = "2"
+
+      let childCount = todoDataSection.childElementCount-1;
+      todoNoDiv.textContent = childCount;
 
       todoItemDiv.appendChild(todoNoDiv);
 
@@ -66,6 +68,15 @@ let todoInputBar = document.getElementById("todo-input-bar");
 
 let saveTodo = document.querySelector(".save-todo");
 
+todoInputBar.addEventListener("keydown",function(){
+      let inputBoxUserInput = todoInputBar.value;
+      if (inputBoxUserInput.length === 0){
+            saveTodo.classList.add("disabled") ;
+      }else{
+            saveTodo.classList.remove("disabled");
+      }
+})
+
 // Getting the value inside the Input Box
 let inputBoxUserInput = todoInputBar.value;
 
@@ -74,7 +85,8 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
       if (inputBoxUserInput.length !=0){
             addTodo(inputBoxUserInput);
       }
-      todoInputBar.value = ""; //This signifies that after adding the todo our search bar gets empty
+      todoInputBar.value = "";
+      saveTodo.classList.add("disabled") ; //This signifies that after adding the todo our search bar gets empty
 })
 
 
