@@ -71,7 +71,9 @@ let inputBoxUserInput = todoInputBar.value;
 
 saveTodo.addEventListener("click",function getTextAndAddTodo(){
       let inputBoxUserInput = todoInputBar.value;
-      addTodo(inputBoxUserInput);
+      if (inputBoxUserInput.length !=0){
+            addTodo(inputBoxUserInput);
+      }
       todoInputBar.value = ""; //This signifies that after adding the todo our search bar gets empty
 })
 
