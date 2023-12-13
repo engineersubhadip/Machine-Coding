@@ -68,8 +68,8 @@ function addTodo(todoData){
             rowDiv.remove();
             globalCounter-=1;
             console.log("I have removed",rowNumberDeleted.textContent);
-            console.log("The number of records left",globalCounter);
-            
+            console.log("The number of records left",globalCounter); 
+            updateSerialNumbers();
             
       };
 
@@ -77,6 +77,31 @@ function addTodo(todoData){
       
 };
 
+function updateSerialNumbers(){
+      let allTodoItemBlock = document.querySelectorAll(".todo-no");
+      console.log(allTodoItemBlock);
+      console.log(typeof allTodoItemBlock);
+
+      // Type of allTodoItemBlock is a node list.
+      // We have to convert them into a list.
+
+      let newArr = Array.from(allTodoItemBlock);
+
+      // This array will also return us the "No" in the 0th position
+      let resultant = newArr.slice(1);
+
+      console.log(resultant);
+      console.log(globalCounter);
+
+      for (let val=0; val < globalCounter; val++){
+            // console.log(resultant[val].textContent);
+            resultant[val].textContent = val+1
+      }
+      // for (let val = 1; val <= globalCounter; val++){
+      //       allTodoItemBlock[val-1].textContent = val;
+      // }
+      
+}
 
 let todoInputBar = document.getElementById("todo-input-bar");
 
