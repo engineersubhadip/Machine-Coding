@@ -104,16 +104,51 @@ function updateRecords(){
 // From there I will grab the particular Status, and change its content.
 
 function changeStatus(event){
-      
+
       let finishBtnPressed = event.target;
       let targetParent =  finishBtnPressed.parentElement.parentElement;
 
       let targetStatus = targetParent.querySelector(".todo-status");
 
+      
+      // We are adding an improvement, which is when the user first clicks on the Finished button , status got "Completed" and the Finished button got "Undo". 
+      // Now when the user will click on the Undo Button, the status will revert to In Progress and the button will change to Finished;
+
       targetStatus.textContent = "Completed";
       targetStatus.style.color = "green";
+      finishBtnPressed.textContent = "Undo";
+
+      // As of now when we are pressing on the Finished some events were happening.
+      // Now the same button is "Undo" which would behave differently on the click.
+      // So we need to remove the existing eventListener from the Finished Button before adding new one.
+
+      finishBtnPressed.removeEventListener("click",changeStatus);
+
+      finishBtnPressed.addEventListener("click",undoChange);
+
 }
 
+function undoChange(event){
+      let undoBtn = event.target;
+            
+      // Again I will try to find the nearest parent of the Undo Button that will encapsulate both Undo Button and Status.
+
+      let targetParent = undoBtn.parentElement.parentElement;
+      
+      let targetStatus = targetParent.querySelector(".todo-status");
+
+      targetStatus.textContent = "In Progress";
+      targetStatus.style.color = ""; 
+      undoBtn.textContent = "Finished";
+
+      // As of now when we are pressing on the Undo some events were happening. -> Undo Change was triggering.
+      // Now the same button is "Undo" which would behave differently on the click.
+      // So we need to remove the existing eventListener from the Undo Button before adding new one.
+
+      undoBtn.removeEventListener("click",undoChange);
+
+      undoBtn.addEventListener("click",changeStatus);
+}
 
 let todoInputBar = document.getElementById("todo-input-bar");
 
