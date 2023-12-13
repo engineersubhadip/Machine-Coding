@@ -65,6 +65,10 @@ function addTodo(todoData){
       // I am going to call the remove() when the user clicks on "delete" button
 
       delBtn.addEventListener("click",removeTodo);
+
+      // Handling the Scenario when, someone clicks on the "Finished" button Status will Change.
+
+      finishedBtn.addEventListener("click",changeStatus);
       
 };
 
@@ -93,6 +97,21 @@ function updateRecords(){
       for (let val=0; val < globalCounter; val++){
             resultArr[val].textContent = val+1;
       }
+}
+
+// In this function I will try to change the Status of the Finished Button I clicked.
+// In order to do that I will need to find the parent of the Status Button.
+// From there I will grab the particular Status, and change its content.
+
+function changeStatus(event){
+      
+      let finishBtnPressed = event.target;
+      let targetParent =  finishBtnPressed.parentElement.parentElement;
+
+      let targetStatus = targetParent.querySelector(".todo-status");
+
+      targetStatus.textContent = "Completed";
+      targetStatus.style.color = "green";
 }
 
 
