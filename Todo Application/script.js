@@ -17,7 +17,7 @@ function addTodo(todoData){
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
 
-      let childCount = todoArr.length+1; // To get the number of Children of todoSection
+      let childCount = todoArr.length; // To get the number of Children of todoSection
       todoNoDiv.textContent = childCount; 
 
       todoItemDiv.appendChild(todoNoDiv);
@@ -36,7 +36,7 @@ function addTodo(todoData){
       todoItemDiv.appendChild(todoStatusDiv);
 
 
-      let todoActionDiv = document.createElement("div");
+      var todoActionDiv = document.createElement("div");
       todoActionDiv.classList.add("todo-action","d-flex","justify-content-between");
 
       todoItemDiv.appendChild(todoActionDiv);
@@ -60,6 +60,18 @@ function addTodo(todoData){
       rowDiv.appendChild(hrTag);
 
       todoDataSection.appendChild(rowDiv);
+
+      // Handling the Scenario where I am adding event listener on click of Delete Button.
+
+      function removeTodo(){
+            let rowNumberDeleted = rowDiv.querySelector(".todo-no");
+            rowDiv.remove();
+            console.log("I have removed",rowNumberDeleted.textContent);
+            
+            
+      };
+
+      delBtn.addEventListener("click",removeTodo);
       
 };
 
@@ -70,7 +82,7 @@ let todoInputBar = document.getElementById("todo-input-bar");
 
 let saveTodo = document.querySelector(".save-todo");
 
-todoInputBar.addEventListener("keydown",function(){
+todoInputBar.addEventListener("keyup",function(){
       let inputBoxUserInput = todoInputBar.value;
       if (inputBoxUserInput.length === 0){
             saveTodo.classList.add("disabled") ;
@@ -90,8 +102,6 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
       }
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
       saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
-})
-
-
+});
 
 
