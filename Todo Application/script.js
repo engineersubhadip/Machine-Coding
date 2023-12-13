@@ -15,8 +15,8 @@ function addTodo(todoData){
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
 
-      let childCount = todoDataSection.childElementCount-1;
-      todoNoDiv.textContent = childCount;
+      let childCount = todoDataSection.childElementCount-1; // To get the number of Children of todoSection
+      todoNoDiv.textContent = childCount; 
 
       todoItemDiv.appendChild(todoNoDiv);
 
