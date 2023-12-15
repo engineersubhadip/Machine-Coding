@@ -106,8 +106,8 @@ getPendingButton.addEventListener("click",function(event){
                   }
             }
             updateRecords();
-      }
-})
+      };
+});
 
 
 function updateRecords(){
@@ -142,14 +142,10 @@ function changeStatus(event){
             targetStatusChange.textContent = "Completed";
             targetStatusChange.style.color = "green";
             currFinishedBtn.textContent = "Undo";
-
-
       }else{
             targetStatusChange.textContent = "In Progress";
             targetStatusChange.style.color = "";
             currFinishedBtn.textContent = "Finished";
-
-            
       };
 
       // So the flow is when the user clicks on Finished or Undo button the whole DOM will re-render.
@@ -201,35 +197,14 @@ function comparator(recordOne,recordTwo){
             return -1;
       }else if ((recordOneStatus == "Completed" && recordTwoStatus == "Completed") || (recordOneStatus == "In Progress" && recordTwoStatus == "In Progress")){
             return -1;
-      }
-
-
-}
+      };
+};
 
 function sortRecords(totalRecords){
 
-      
-
       totalRecords = Array.from(totalRecords);
-      
       totalRecords.sort(comparator);
-
-      console.log(totalRecords);
-      return totalRecords
-
-      // totalRecords.splice(1);
-
-      // console.log(totalRecords);
-      // console.log(recordList[0].parentElement);
-      // console.log(recordList[0].parentElement);
-
-      // for (let i=0; i<recordList.length; i++){
-      //       totalRecords.push(recordList[i].parentElement)
-      // }
-
-      // console.log(totalRecords);
-      // addTodo(totalRecords);
-
+      return totalRecords;
 }
 
 let todoInputBar = document.getElementById("todo-input-bar");
@@ -251,11 +226,14 @@ todoInputBar.addEventListener("keyup",function(){
 let inputBoxUserInput = todoInputBar.value;
 
 saveTodo.addEventListener("click",function getTextAndAddTodo(){
+
       let inputBoxUserInput = todoInputBar.value;
       if (inputBoxUserInput.length !=0){
             globalCounter += 1;
             addTodo(inputBoxUserInput);
+
       }
+
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
       saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
 });
