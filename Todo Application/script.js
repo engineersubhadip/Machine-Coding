@@ -1,7 +1,7 @@
 let todoDataSection = document.querySelector(".todo-data");
 
 let globalCounter = 0;
-let invisibleCounter = 0;
+let invisibleCounter = 0; // This variable is needed so that if we have some todo's in the Completed state and user clicks on Get Pending todo. The user will get a list of In Progress todo's. Now if a user adds a new todo. Then this variable will ensure that invisible todo's will not affect the numbering of the incoming todo's.
 
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
