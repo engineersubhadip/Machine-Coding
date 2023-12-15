@@ -64,6 +64,10 @@ function addTodo(todoData){
       // Handling the Scenario where I am adding event listener on click of Delete Button.
       
       delBtn.addEventListener("click",removeTodo);
+
+      // Handling the Scenario where I am adding event listener on the click of Finished Button.
+
+      finishedBtn.addEventListener("click",changeStatus);
       
       
 };
@@ -82,11 +86,21 @@ function removeTodo (event){
 function updateRecords(){
       let todoNumber = document.querySelectorAll(".row .todo-item .todo-no");
 
-
       for (let i=0; i<globalCounter; i++){
             todoNumber[i].textContent = i+1;
       }
-      
+}
+
+function changeStatus(event){
+      let currFinishedBtn = event.target;
+
+      let parentElement = currFinishedBtn.parentElement.parentElement;
+
+      let targetStatusChange = parentElement.querySelector(".todo-status");
+
+      targetStatusChange.textContent = "Completed";
+
+      targetStatusChange.style.color = "green";
 }
 
 let todoInputBar = document.getElementById("todo-input-bar");
