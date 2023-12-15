@@ -83,11 +83,48 @@ function removeTodo (event){
       updateRecords();
 }
 
-function updateRecords(){
-      let todoNumber = document.querySelectorAll(".row .todo-item .todo-no");
+// Handling the Scenario where I am adding event listener on the click of 
+// Get Pending Todo button:-
 
-      for (let i=0; i<globalCounter; i++){
-            todoNumber[i].textContent = i+1;
+let getPendingButton = document.querySelector(".get-todo");
+
+getPendingButton.addEventListener("click",function(event){
+      
+      if (globalCounter === 0){
+            return;
+      }else{
+            let todoItemList = document.querySelectorAll(".todo-item");
+
+            for (let i=0; i<todoItemList.length; i++){
+                  let filteringCriteria = todoItemList[i].querySelector(".todo-status").textContent;
+
+                  if (filteringCriteria !== "In Progress"){
+                        let parentBlock = todoItemList[i].parentElement;
+
+                        parentBlock.style.display = "none";
+                  }
+            }
+            updateRecords();
+      }
+})
+
+
+function updateRecords(){
+      let todoRecords = document.querySelectorAll(".row .todo-item");
+      
+      todoRecords = Array.from(todoRecords);
+      
+      let filteredRecords = todoRecords.reduce(function(acc,curr){
+            let parentBlock = curr.parentElement;
+            if (parentBlock.style.display != "none"){
+                  acc.push(parentBlock);
+            }
+            return acc;
+      },[]);
+
+      for (let i=0; i<filteredRecords.length; i++){
+            let targetedNumber = filteredRecords[i].querySelector(".todo-item .todo-no");
+            targetedNumber.textContent = i+1;
       }
 }
 
@@ -132,27 +169,4 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
 });
 
 
-// Handling the Scenario where I am adding event listener on the click of 
-// Get Pending Todo button:-
-
-let getPendingButton = document.querySelector(".get-todo");
-
-getPendingButton.addEventListener("click",function(event){
-      
-      if (globalCounter === 0){
-            return;
-      }else{
-            let todoItemList = document.querySelectorAll(".todo-item");
-
-            for (let i=0; i<todoItemList.length; i++){
-                  let filteringCriteria = todoItemList[i].querySelector(".todo-status").textContent;
-
-                  if (filteringCriteria !== "In Progress"){
-                        let parentBlock = todoItemList[i].parentElement;
-
-                        parentBlock.style.display = "none";
-                  }
-            }
-      }
-})
 
