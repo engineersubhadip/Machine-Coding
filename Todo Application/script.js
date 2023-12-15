@@ -62,92 +62,31 @@ function addTodo(todoData){
       todoDataSection.appendChild(rowDiv);
 
       // Handling the Scenario where I am adding event listener on click of Delete Button.
-      // I am going to call the remove() when the user clicks on "delete" button
-
+      
       delBtn.addEventListener("click",removeTodo);
-
-      // Handling the Scenario when, someone clicks on the "Finished" button Status will Change.
-
-      finishedBtn.addEventListener("click",changeStatus);
+      
       
 };
 
-function removeTodo(event){
-      let rowToDelete =  event.target.parentElement.parentElement.parentElement;
+function removeTodo (event){
+      let recordDeleted = event.target;
+      let targetParentDeleted = recordDeleted.parentElement.parentElement.parentElement;
+      
       globalCounter-=1;
-      rowToDelete.remove();
-      updateRecords();
-};
+      targetParentDeleted.remove();
 
-// Once we have removed our row, we must re-render our whole todo list. So, that we get proper serial numbers
+      // Once I am removing the record I need to re-render the whole to-do list so that serial number
+      updateRecords();
+}
 
 function updateRecords(){
-      let todoNo = document.querySelectorAll(".todo-no");
-
-      // The above will give us an Node List of all the already todo-no in the DOM.
-      // We have to convert the node-list to list.
-
-      let todoNoArr = Array.from(todoNo);
-
-      // We will remove the first element from the array, as it contains the element "No." because "No." also has a class ".todo-no";
-
-      let resultArr = todoNoArr.splice(1);
+      let todoNumber = document.querySelectorAll(".row .todo-item .todo-no");
 
 
-      for (let val=0; val < globalCounter; val++){
-            resultArr[val].textContent = val+1;
+      for (let i=0; i<globalCounter; i++){
+            todoNumber[i].textContent = i+1;
       }
-}
-
-// In this function I will try to change the Status of the Finished Button I clicked.
-// In order to do that I will need to find the parent of the Status Button.
-// From there I will grab the particular Status, and change its content.
-
-function changeStatus(event){
-
-      let finishBtnPressed = event.target;
-      let targetParent =  finishBtnPressed.parentElement.parentElement;
-
-      let targetStatus = targetParent.querySelector(".todo-status");
-
       
-      // We are adding an improvement, which is when the user first clicks on the Finished button , status got "Completed" and the Finished button got "Undo". 
-      // Now when the user will click on the Undo Button, the status will revert to In Progress and the button will change to Finished;
-
-      targetStatus.textContent = "Completed";
-      targetStatus.style.color = "green";
-      finishBtnPressed.textContent = "Undo";
-
-      // As of now when we are pressing on the Finished some events were happening.
-      // Now the same button is "Undo" which would behave differently on the click.
-      // So we need to remove the existing eventListener from the Finished Button before adding new one.
-
-      finishBtnPressed.removeEventListener("click",changeStatus);
-
-      finishBtnPressed.addEventListener("click",undoChange);
-
-}
-
-function undoChange(event){
-      let undoBtn = event.target;
-            
-      // Again I will try to find the nearest parent of the Undo Button that will encapsulate both Undo Button and Status.
-
-      let targetParent = undoBtn.parentElement.parentElement;
-      
-      let targetStatus = targetParent.querySelector(".todo-status");
-
-      targetStatus.textContent = "In Progress";
-      targetStatus.style.color = ""; 
-      undoBtn.textContent = "Finished";
-
-      // As of now when we are pressing on the Undo some events were happening. -> Undo Change was triggering.
-      // Now the same button is "Undo" which would behave differently on the click.
-      // So we need to remove the existing eventListener from the Undo Button before adding new one.
-
-      undoBtn.removeEventListener("click",undoChange);
-
-      undoBtn.addEventListener("click",changeStatus);
 }
 
 let todoInputBar = document.getElementById("todo-input-bar");
