@@ -142,12 +142,76 @@ function changeStatus(event){
             targetStatusChange.textContent = "Completed";
             targetStatusChange.style.color = "green";
             currFinishedBtn.textContent = "Undo";
+
+
       }else{
             targetStatusChange.textContent = "In Progress";
             targetStatusChange.style.color = "";
             currFinishedBtn.textContent = "Finished";
+
+            
+      };
+
+      let totalRecords = document.querySelectorAll(".todo-data .row");
+
+      let headerTag = totalRecords[0]
+
+      let parentAttach =  document.querySelector(".todo-data");
+
+      let hrTag = document.createElement("hr");
+      
+      let outputList = sortRecords(totalRecords);
+      
+      parentAttach.innerHTML = "";
+      parentAttach.appendChild(headerTag);
+      parentAttach.appendChild(hrTag);
+
+      for (let i=0; i<outputList.length; i++){
+            parentAttach.appendChild(outputList[i]);
+      }
+};
+
+function comparator(recordOne,recordTwo){
+
+      let recordOneStatus = recordOne.querySelector(".todo-status").textContent;
+
+      let recordTwoStatus = recordTwo.querySelector(".todo-status").textContent;
+
+      if (recordOneStatus == "Completed" && recordTwoStatus == "In Progress"){
+            return -1;
+      }else if (recordOneStatus == "In Progress" && recordTwoStatus == "Completed"){
+            return 1;
+      }else if ((recordOneStatus == "Completed" && recordTwoStatus == "Completed") || (recordOneStatus == "In Progress" && recordTwoStatus == "In Progress")){
+            return -1;
       }
 
+
+}
+
+function sortRecords(totalRecords){
+
+      
+
+      totalRecords = Array.from(totalRecords);
+      totalRecords = totalRecords.splice(1);
+      
+      totalRecords.sort(comparator);
+
+      console.log(totalRecords);
+      return totalRecords
+
+      // totalRecords.splice(1);
+
+      // console.log(totalRecords);
+      // console.log(recordList[0].parentElement);
+      // console.log(recordList[0].parentElement);
+
+      // for (let i=0; i<recordList.length; i++){
+      //       totalRecords.push(recordList[i].parentElement)
+      // }
+
+      // console.log(totalRecords);
+      // addTodo(totalRecords);
 
 }
 
@@ -164,7 +228,7 @@ todoInputBar.addEventListener("keyup",function(){
       }else{
             saveTodo.classList.remove("disabled");
       }
-})
+});
 
 // Getting the value inside the Input Box
 let inputBoxUserInput = todoInputBar.value;
