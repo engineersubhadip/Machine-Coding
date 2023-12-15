@@ -99,8 +99,8 @@ function changeStatus(event){
       let targetStatusChange = parentElement.querySelector(".todo-status");
 
       targetStatusChange.textContent = "Completed";
-
       targetStatusChange.style.color = "green";
+
 }
 
 let todoInputBar = document.getElementById("todo-input-bar");
@@ -130,4 +130,29 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
       saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
 });
+
+
+// Handling the Scenario where I am adding event listener on the click of 
+// Get Pending Todo button:-
+
+let getPendingButton = document.querySelector(".get-todo");
+
+getPendingButton.addEventListener("click",function(event){
+      
+      if (globalCounter === 0){
+            return;
+      }else{
+            let todoItemList = document.querySelectorAll(".todo-item");
+
+            for (let i=0; i<todoItemList.length; i++){
+                  let filteringCriteria = todoItemList[i].querySelector(".todo-status").textContent;
+
+                  if (filteringCriteria !== "In Progress"){
+                        let parentBlock = todoItemList[i].parentElement;
+
+                        parentBlock.style.display = "none";
+                  }
+            }
+      }
+})
 
