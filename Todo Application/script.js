@@ -1,6 +1,7 @@
 let todoDataSection = document.querySelector(".todo-data");
 
 let globalCounter = 0;
+let invisibleCounter = 0;
 
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
@@ -17,7 +18,7 @@ function addTodo(todoData){
       let todoNoDiv = document.createElement("div");
       todoNoDiv.classList.add("todo-no");
 
-      let childCount = globalCounter // To get the number of Children of todoSection
+      let childCount = globalCounter-invisibleCounter; // To get the number of Children of todoSection
       todoNoDiv.textContent = childCount; 
 
       todoItemDiv.appendChild(todoNoDiv);
@@ -121,6 +122,8 @@ function updateRecords(){
             }
             return acc;
       },[]);
+
+      invisibleCounter = globalCounter - filteredRecords.length;
 
       for (let i=0; i<filteredRecords.length; i++){
             let targetedNumber = filteredRecords[i].querySelector(".todo-item .todo-no");
