@@ -152,6 +152,18 @@ function changeStatus(event){
             
       };
 
+      // So the flow is when the user clicks on Finished or Undo button the whole DOM will re-render.
+      // How the logic is working is that :-> When the user clicks on Finished/Undo Button, I am doing the following steps :-
+
+      // 1. I am currently fetching all the rows inside .todo-data and storing inside a list.
+      // 2. I know the first row will be the header comprising of headings such as (No, Todo-item, Status, Actions). So I extracted that inside `header Tag`.
+      // 3. I know whatever will be the updated list containing the rows everything will be added as a child of the class `.todo-data`. So I made class `.todo-data` as the parent.
+      // 4. Now I cleared the DOM by saying parentAttach.innerHTML = "".
+      // 5. I attached the heading and hr tag inside the parent.
+      // As of now my DOM is empty, all of my rows are saved inside a temporary unsorted list (line1).
+      // 6. Now I sorted the list using a comparator Function.
+      // 7. I am iterating the sorted list and for every row I encounter I am attaching that row as a child of the parent.
+
       let totalRecords = document.querySelectorAll(".todo-data .row");
 
       let headerTag = totalRecords[0]
@@ -159,16 +171,22 @@ function changeStatus(event){
       let parentAttach =  document.querySelector(".todo-data");
 
       let hrTag = document.createElement("hr");
-      
-      let outputList = sortRecords(totalRecords);
-      
+
       parentAttach.innerHTML = "";
       parentAttach.appendChild(headerTag);
       parentAttach.appendChild(hrTag);
 
+      totalRecords = Array.from(totalRecords);
+      totalRecords = totalRecords.splice(1);
+      
+      let outputList = sortRecords(totalRecords);
+      
+
       for (let i=0; i<outputList.length; i++){
             parentAttach.appendChild(outputList[i]);
       }
+
+      updateRecords();
 };
 
 function comparator(recordOne,recordTwo){
@@ -193,7 +211,7 @@ function sortRecords(totalRecords){
       
 
       totalRecords = Array.from(totalRecords);
-      totalRecords = totalRecords.splice(1);
+      // totalRecords = totalRecords.splice(1);
       
       totalRecords.sort(comparator);
 
