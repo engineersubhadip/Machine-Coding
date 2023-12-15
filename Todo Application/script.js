@@ -56,6 +56,13 @@ function addTodo(todoData){
 
       todoActionDiv.appendChild(finishedBtn);
 
+      let editBtn = document.createElement("button");
+      editBtn.classList.add("btn");
+      editBtn.classList.add("btn-info");
+      editBtn.textContent = "Edit";
+
+      todoActionDiv.appendChild(editBtn);
+
       let hrTag = document.createElement("hr");
 
       rowDiv.appendChild(hrTag);
@@ -69,6 +76,10 @@ function addTodo(todoData){
       // Handling the Scenario where I am adding event listener on the click of Finished Button.
 
       finishedBtn.addEventListener("click",changeStatus);
+
+      // Adding the functionality where I am adding event listener on the click of Edit Button.
+
+      editBtn.addEventListener("click",replaceableTodo);
       
       
 };
@@ -206,6 +217,44 @@ function sortRecords(totalRecords){
       totalRecords.sort(comparator);
       return totalRecords;
 }
+
+function replaceableTodo(event){
+      let targetField = event.target;
+      let parentItem = targetField.parentElement.parentElement;
+
+      let todoItem = parentItem.querySelector(".todo-detail");
+
+      let recordDiv = document.createElement("div");
+      
+      let recordInputField = document.createElement("input");
+
+      recordDiv.appendChild(recordInputField);
+      
+      todoItem.replaceWith(recordDiv);
+      recordDiv.style.flexBasis = "55%";
+      
+      recordInputField.addEventListener("keyup",recordInputCallback);
+}
+
+
+function recordInputCallback(event){
+      let runningParent = event.target.parentElement.parentElement;
+      let runningEdit = runningParent.querySelector(".todo-action button:nth-child(3)");
+
+      let currentInputValue = event.target.value;
+      
+      if (currentInputValue.length != 0){
+            runningEdit.textContent = "Save";
+      }else{
+            runningEdit.textContent = "Edit"
+      }
+      // let targetEdit = inputParent.querySelector(".todo-action button:nth-child(3)");
+      // console.log(targetEdit);
+      // if (currentValue.length != 0){
+      //       event.target.textContent = "Save";
+      // }
+}
+
 
 let todoInputBar = document.getElementById("todo-input-bar");
 
