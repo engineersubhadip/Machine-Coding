@@ -138,8 +138,16 @@ function changeStatus(event){
 
       let targetStatusChange = parentElement.querySelector(".todo-status");
 
-      targetStatusChange.textContent = "Completed";
-      targetStatusChange.style.color = "green";
+      if(currFinishedBtn.textContent=="Finished"){
+            targetStatusChange.textContent = "Completed";
+            targetStatusChange.style.color = "green";
+            currFinishedBtn.textContent = "Undo";
+      }else{
+            targetStatusChange.textContent = "In Progress";
+            targetStatusChange.style.color = "";
+            currFinishedBtn.textContent = "Finished";
+      }
+
 
 }
 
