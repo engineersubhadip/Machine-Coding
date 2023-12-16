@@ -101,23 +101,34 @@ function removeTodo (event){
 
 let getPendingButton = document.querySelector(".get-todo");
 
+
 getPendingButton.addEventListener("click",function(event){
       
       if (globalCounter === 0){
-            return;
+            return 
       }else{
             let todoItemList = document.querySelectorAll(".todo-item");
+            if (getPendingButton.innerText == "Get Pending Todo"){
+                  // console.log("Yes");
+                  for (let i=0; i<todoItemList.length; i++){
+                        let filteringCriteria = todoItemList[i].querySelector(".todo-status").textContent;
+      
+                        if (filteringCriteria !== "In Progress"){
+                              let parentBlock = todoItemList[i].parentElement;
+      
+                              parentBlock.style.display = "none";
+                        }
+                  }
+                  updateRecords();
+                  getPendingButton.innerText = "Show All";
+            }
 
-            for (let i=0; i<todoItemList.length; i++){
-                  let filteringCriteria = todoItemList[i].querySelector(".todo-status").textContent;
-
-                  if (filteringCriteria !== "In Progress"){
-                        let parentBlock = todoItemList[i].parentElement;
-
-                        parentBlock.style.display = "none";
+            else if (getPendingButton.innerText == "Show All"){
+                  for (let i=0; i<todoItemList.length; i++){
+                        todoItemList[i].parentElement.style.display = "block";
                   }
             }
-            updateRecords();
+
       };
 });
 
