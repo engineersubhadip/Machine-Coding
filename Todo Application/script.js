@@ -305,6 +305,8 @@ todoInputBar.addEventListener("keyup",function(){
 // Getting the value inside the Input Box
 let inputBoxUserInput = todoInputBar.value;
 
+
+
 saveTodo.addEventListener("click",function getTextAndAddTodo(){
 
       let inputBoxUserInput = todoInputBar.value;
@@ -316,6 +318,19 @@ saveTodo.addEventListener("click",function getTextAndAddTodo(){
 
       todoInputBar.value = "";//This signifies that after adding the todo our search bar gets empty
       saveTodo.classList.add("disabled") ; // This signifies that after the search bar gets disabled we are disabling the save Button
+});
+
+// Styling to Save Todo Button
+saveTodo.addEventListener("mouseover",function(event){
+      let targetButton = saveTodo;
+      targetButton.style.transition = "transform 0.3s ease";
+      targetButton.style.transform = "scale(1.1)";
+});
+
+saveTodo.addEventListener("mouseout",function(event){
+      let targetButton = saveTodo;
+      targetButton.style.transition = "transform 0.3s ease";
+      targetButton.style.transform = "scale(1)";
 });
 
 
