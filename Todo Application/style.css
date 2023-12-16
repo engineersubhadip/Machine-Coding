@@ -11,13 +11,6 @@ body{
       padding:0;
 }
 
-.save-todo {
-      transform: scale(1); /* You can adjust the scale factor */
-}
-
-.save-todo:hover {
-      transform: scale(1.1); /* You can adjust the scale factor */
-}
 
 .input-section{
       margin-top:2rem;
