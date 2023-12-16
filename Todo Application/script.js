@@ -121,12 +121,17 @@ getPendingButton.addEventListener("click",function(event){
                   }
                   updateRecords();
                   getPendingButton.innerText = "Show All";
+                  getPendingButton.style.background = "#B4CF66"
+                  getPendingButton.style.border = "none"
             }
 
             else if (getPendingButton.innerText == "Show All"){
                   for (let i=0; i<todoItemList.length; i++){
                         todoItemList[i].parentElement.style.display = "block";
                   }
+                  updateRecords();
+                  getPendingButton.innerText = "Get Pending Todo";
+                  getPendingButton.style.background = ""
             }
 
       };
