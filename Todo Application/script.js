@@ -3,7 +3,6 @@ let todoDataSection = document.querySelector(".todo-data");
 let globalCounter = 0;
 let invisibleCounter = 0; // This variable is needed so that if we have some todo's in the Completed state and user clicks on Get Pending todo. The user will get a list of In Progress todo's. Now if a user adds a new todo. Then this variable will ensure that invisible todo's will not affect the numbering of the incoming todo's.
 
-let finalGlobalTodoDetail = "";
 
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
@@ -233,6 +232,7 @@ function replaceableTodo(event){
             let tempInput = document.createElement("input");
             tempInput.classList.add("form-control");
             tempInput.type = "text";
+            tempInput.classList.add("temp-input");
             tempBlock.appendChild(tempInput);
             tempBlock.style.flexBasis = "55%"
             tempInput.value = currentTodoItem.textContent;
@@ -248,14 +248,13 @@ function replaceableTodo(event){
                         currentButton.disabled = true;
                   }else{
                         currentButton.disabled = false;
-                        finalGlobalTodoDetail = currentValue;
                   }
             })
       }else if(currentButton.textContent == "Save"){
-
+            let valueToDisplay = document.querySelector(".temp-block .temp-input").value
             let tempDiv = document.createElement("div");
             tempDiv.classList.add("todo-detail","text-muted");
-            tempDiv.textContent = finalGlobalTodoDetail;
+            tempDiv.textContent = valueToDisplay;
             currentButton.textContent = "Edit";
             mainParent.replaceChild(tempDiv,document.querySelector(".temp-block"));
 
