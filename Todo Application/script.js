@@ -226,10 +226,12 @@ function replaceableTodo(event){
       let currentTodoItem = mainParent.querySelector(".todo-detail");
 
       let currentFinishBtn = mainParent.querySelector(".todo-action button:nth-child(2)");
+      
 
       if (currentButton.textContent == "Edit"){
 
             currentFinishBtn.disabled = true;
+            getPendingButton.style.display = "none";
 
             let tempBlock = document.createElement("div");
             tempBlock.classList.add("temp-block");
@@ -257,6 +259,7 @@ function replaceableTodo(event){
       }else if(currentButton.textContent == "Save"){
 
             currentFinishBtn.disabled = false;
+            getPendingButton.style.display = "block";
 
             let valueToDisplay = document.querySelector(".temp-block .temp-input").value
             let tempDiv = document.createElement("div");
