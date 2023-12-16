@@ -219,41 +219,26 @@ function sortRecords(totalRecords){
 }
 
 function replaceableTodo(event){
-      let targetField = event.target;
-      let parentItem = targetField.parentElement.parentElement;
 
-      let todoItem = parentItem.querySelector(".todo-detail");
+      //  Line 224 -> 239 :- Implemented the Scenario that when the user clicks on EDIT Button, a input box appears in the todo-detail with default value populated and Edit button changing to SAVE Button.
 
-      let recordDiv = document.createElement("div");
-      
-      let recordInputField = document.createElement("input");
+      let currentButton = event.target;
+      let currentTodoItem = event.target.parentElement.parentElement.querySelector(".todo-detail");
 
-      recordDiv.appendChild(recordInputField);
-      
-      todoItem.replaceWith(recordDiv);
-      recordDiv.style.flexBasis = "55%";
-      
-      recordInputField.addEventListener("keyup",recordInputCallback);
+      let tempBlock = document.createElement("div");
+      let tempInput = document.createElement("input");
+      tempInput.classList.add("form-control");
+      tempInput.type = "text";
+      tempBlock.appendChild(tempInput);
+
+      tempBlock.style.flexBasis = "55%"
+
+      currentTodoItem.replaceWith(tempBlock);
+      tempInput.value = currentTodoItem.textContent;
+
+      currentButton.textContent = "Save";
 }
 
-
-function recordInputCallback(event){
-      let runningParent = event.target.parentElement.parentElement;
-      let runningEdit = runningParent.querySelector(".todo-action button:nth-child(3)");
-
-      let currentInputValue = event.target.value;
-      
-      if (currentInputValue.length != 0){
-            runningEdit.textContent = "Save";
-      }else{
-            runningEdit.textContent = "Edit"
-      }
-      // let targetEdit = inputParent.querySelector(".todo-action button:nth-child(3)");
-      // console.log(targetEdit);
-      // if (currentValue.length != 0){
-      //       event.target.textContent = "Save";
-      // }
-}
 
 
 let todoInputBar = document.getElementById("todo-input-bar");
