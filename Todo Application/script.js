@@ -3,6 +3,8 @@ let todoDataSection = document.querySelector(".todo-data");
 let globalCounter = 0;
 let invisibleCounter = 0; // This variable is needed so that if we have some todo's in the Completed state and user clicks on Get Pending todo. The user will get a list of In Progress todo's. Now if a user adds a new todo. Then this variable will ensure that invisible todo's will not affect the numbering of the incoming todo's.
 
+let finalGlobalTodoDetail = "";
+
 function addTodo(todoData){
       let rowDiv = document.createElement("div");
       rowDiv.classList.add("row");
@@ -220,26 +222,45 @@ function sortRecords(totalRecords){
 
 function replaceableTodo(event){
 
-      //  Line 224 -> 239 :- Implemented the Scenario that when the user clicks on EDIT Button, a input box appears in the todo-detail with default value populated and Edit button changing to SAVE Button.
-
       let currentButton = event.target;
-      let currentTodoItem = event.target.parentElement.parentElement.querySelector(".todo-detail");
+      let mainParent = event.target.parentElement.parentElement;
+      let currentTodoItem = mainParent.querySelector(".todo-detail");
 
-      let tempBlock = document.createElement("div");
-      let tempInput = document.createElement("input");
-      tempInput.classList.add("form-control");
-      tempInput.type = "text";
-      tempBlock.appendChild(tempInput);
+      if (currentButton.textContent == "Edit"){
+            
+            let tempBlock = document.createElement("div");
+            tempBlock.classList.add("temp-block");
+            let tempInput = document.createElement("input");
+            tempInput.classList.add("form-control");
+            tempInput.type = "text";
+            tempBlock.appendChild(tempInput);
+            tempBlock.style.flexBasis = "55%"
+            tempInput.value = currentTodoItem.textContent;
+            mainParent.replaceChild(tempBlock,currentTodoItem);
 
-      tempBlock.style.flexBasis = "55%"
+            currentButton.textContent = "Save";
+            
+            // User starts typing in the Input Box:-
+            tempInput.addEventListener("keyup",function(event){
 
-      currentTodoItem.replaceWith(tempBlock);
-      tempInput.value = currentTodoItem.textContent;
+                  let currentValue = event.target.value;
+                  if (currentValue.length == 0){
+                        currentButton.disabled = true;
+                  }else{
+                        currentButton.disabled = false;
+                        finalGlobalTodoDetail = currentValue;
+                  }
+            })
+      }else if(currentButton.textContent == "Save"){
 
-      currentButton.textContent = "Save";
+            let tempDiv = document.createElement("div");
+            tempDiv.classList.add("todo-detail","text-muted");
+            tempDiv.textContent = finalGlobalTodoDetail;
+            currentButton.textContent = "Edit";
+            mainParent.replaceChild(tempDiv,document.querySelector(".temp-block"));
+
+      }
 }
-
-
 
 let todoInputBar = document.getElementById("todo-input-bar");
 
