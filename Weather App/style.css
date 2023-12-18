@@ -9,16 +9,16 @@ html{
 body{
     margin:0;
     padding:0;
+    background-color: #F2E3D5;
 }
 
 
 .container{
-    border:2px solid red;
     width: 100vw;
+    background-color: #F2E3D5;
 }
 
 .container .row:first-child{
-    border:2px solid green;
     background-color: #012E40;
     color: white;
     height:75vh;
@@ -52,4 +52,12 @@ body{
 
 .weather-details-image .weather-details{
     text-align: center;
+}
+
+.input-section{
+    gap:2.5rem
+}
+
+.location-input{
+    flex-basis: 60%;
 }
