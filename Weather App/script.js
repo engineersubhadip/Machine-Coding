@@ -1,4 +1,4 @@
-let refAPI = "http://api.weatherapi.com/v1/current.json?key=028be68db8544e0abd031821231612&q=mumbai&aqi=no";
+let refAPI = "https://api.weatherapi.com/v1/current.json?key=028be68db8544e0abd031821231612&q=mumbai&aqi=no";
 
 refAPI = refAPI.split("&q");
 
