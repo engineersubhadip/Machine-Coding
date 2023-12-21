@@ -94,7 +94,7 @@ body{
 .row{
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-evenly;
+      justify-content: space-between;
       gap:3rem;
 }
 
@@ -115,6 +115,7 @@ body{
       height: 50vh;
       width: 50vw;
       padding: 0;
+      display: none;
       position: fixed;
       top:30vh;
       bottom: 25vh;

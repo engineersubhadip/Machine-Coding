@@ -5,3 +5,5 @@
 3. We have used `overflow-y : auto` to make the vertical scroll bar to appear when required if not required then it will hide it.
 
 4. We have used `transform: scale(1.05)` on the hover and `transition: transform 0.3s ease-in-out;` on the element to give animation effect.
+
+5. We have styled the Modal Container
