@@ -1,0 +1,22 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before, *::after{
+    box-sizing: inherit;
+}
+
+#outer{
+    height:500px;
+    width:500px;
+    padding:2px;
+    border:1px solid black;
+    display:flex;
+    flex-wrap:wrap;
+    margin:50px auto;
+  }
+  
+  .inner{
+    border:1px solid red;
+    flex-basis:33.3%;
+  }
