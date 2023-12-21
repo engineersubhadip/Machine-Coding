@@ -22,4 +22,7 @@ html{
     flex-basis: 33.3%;
     font-size: 40px;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
