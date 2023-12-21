@@ -1,19 +1,9 @@
 document.addEventListener("DOMContentLoaded",function(){
-
     let outer = document.querySelector("#outer");
     let chance = false; // If Chance is False we put "O", if true we put "X"
-    let arr = [];
+    let arr = Array(9).fill(9);
 
-    for (let i=0; i<3; i++){
-        let temp = [];
-        for (let j=0;j<3; j++){
-            temp.push(undefined);
-        }
-        arr.push(temp);
-    }
-
-    let rowCount = 3;
-    let colCount = 3;
+    
 
     outer.addEventListener("click",function(e){
         let cell = e.target;
@@ -23,64 +13,53 @@ document.addEventListener("DOMContentLoaded",function(){
         if (chance == true && cell.textContent == ""){
             cell.textContent = "X";
             chance = false;
-            currRow = Math.floor(cellNumber/3);
-            currCol = cellNumber%3;
-            arr[currRow][currCol] = "X";
+            arr[cellNumber]="X";
+            winningCombo("X");
 
         }else if (chance == false && cell.textContent == ""){
             cell.textContent = "O";
             chance = true;
-            currRow = Math.floor(cellNumber/3);
-            currCol = cellNumber%3;
-            arr[currRow][currCol] = "O";
+            arr[cellNumber]="O";
+            winningCombo("O")
         }
-        
-        // For every time we insert an element we have to check if either "X" or "Y" has won.
-
-        // ! We will first check for horizontally :-
-        //* Iterate in every row and check if we get a substring like "XXX" or "OOO".
-
-        let finalStringX = false;
-        let finalStringO = false;
-
-        for (let i=0; i<rowCount; i++){
-            let tempString = "";
-            for (let j=0; j<colCount; j++){
-                tempString += arr[i][j];
-            }
-            if (tempString == "XXX"){
-                finalStringX = true;
-            }else if (tempString == "OOO"){
-                finalStringO = true;
-            }
-        }
-
-        if (finalStringX){
-            console.log("X Won !!!");
-        }else if (finalStringO){
-            console.log("O wins !!!");
-        }
-
-        // ! We will now check vertically:-
-
-        for (j=0; j<colCount; j++){
-            let tempStr = "";
-            for (let i=0; i<rowCount; i++){
-                tempStr += arr[i][j];
-            };
-            if (tempStr == "XXX"){
-                finalStringX = true;
-            }else if (tempStr == "OOO"){
-                finalStringO = true;
-            };
-        };
-
-        if (finalStringX){
-            console.log("X Wins !!!");
-        }else if (finalStringO){
-            console.log("O wins !!!");
-        }
-
+        document.getElementById("result").textContent;
     });
+
+    
+    function winningCombo(char) {
+        let result = document.getElementById("result");
+        if(arr[0] == char && arr[1] == char && arr[2] == char) {
+            // the f0th row is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[3] == char && arr[4] == char && arr[5] == char) {
+            // the 1st row is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[6] == char && arr[7] == char && arr[8] == char) {
+            // the 2nd row is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[0] == char && arr[3] == char && arr[6] == char) {
+            // the 0th col is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[1] == char && arr[4] == char && arr[7] == char) {
+            // the 1st col is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[2] == char && arr[5] == char && arr[0] == char) {
+            // the 2nd col is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[0] == char && arr[4] == char && arr[8] == char) {
+            // the 1st col is having the char;
+            result.textContent = `${char} wins`;
+        }
+        else if(arr[2] == char && arr[4] == char && arr[6] == char) {
+            // the 2nd col is having the char;
+            result.textContent = `${char} wins`;
+        }
+    }
 
 });

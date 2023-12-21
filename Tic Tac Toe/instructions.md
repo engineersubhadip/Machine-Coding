@@ -12,4 +12,4 @@ A. if the chance is `true` and the cell is empty then -> We are populating the c
 
 B. If the chance is `false` and the cell is empty then -> We are populating the cell with O and making the chance as `true`.
 
-4. We have used a 2D array to store the value of which cell gets X or O. Every time we populate either X or O we will check in the entire 2D array if we got consecutive XXX or OOO. And if we have that we can declare a winner.
+4. Applied game logic
