@@ -117,8 +117,8 @@ body{
       padding: 0;
       display: none;
       position: fixed;
-      top:30vh;
-      bottom: 25vh;
+      top:40vh;
+      bottom: 15vh;
       left:25vw;
       right:25vw;
 }
