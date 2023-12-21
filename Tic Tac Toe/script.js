@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded",function(){
         arr.push(temp);
     }
 
+    let rowCount = 3;
+    let colCount = 3;
+
     outer.addEventListener("click",function(e){
         let cell = e.target;
         let cellNumber = cell.getAttribute("data-cell");
@@ -31,7 +34,33 @@ document.addEventListener("DOMContentLoaded",function(){
             currCol = cellNumber%3;
             arr[currRow][currCol] = "O";
         }
-        console.log(arr);
+        
+        // For every time we insert an element we have to check if either "X" or "Y" has won.
+
+        // ! We will first check for horizontally :-
+        //* Iterate in every row and check if we get a substring like "XXX" or "OOO".
+
+        let finalStringX = false;
+        let finalStringO = false;
+
+        for (let i=0; i<rowCount; i++){
+            let tempString = "";
+            for (let j=0; j<colCount; j++){
+                tempString += arr[i][j];
+            }
+            if (tempString == "XXX"){
+                finalStringX = true;
+            }else if (tempString == "OOO"){
+                finalStringO = true;
+            }
+        }
+
+        if (finalStringX){
+            console.log("X Won !!!");
+        }else if (finalStringO){
+            console.log("O wins !!!");
+        }
+
     });
 
 });
