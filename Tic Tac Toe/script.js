@@ -61,6 +61,26 @@ document.addEventListener("DOMContentLoaded",function(){
             console.log("O wins !!!");
         }
 
+        // ! We will now check vertically:-
+
+        for (j=0; j<colCount; j++){
+            let tempStr = "";
+            for (let i=0; i<rowCount; i++){
+                tempStr += arr[i][j];
+            };
+            if (tempStr == "XXX"){
+                finalStringX = true;
+            }else if (tempStr == "OOO"){
+                finalStringO = true;
+            };
+        };
+
+        if (finalStringX){
+            console.log("X Wins !!!");
+        }else if (finalStringO){
+            console.log("O wins !!!");
+        }
+
     });
 
 });
