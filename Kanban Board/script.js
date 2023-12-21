@@ -15,22 +15,6 @@ addBtn.addEventListener("click", function(e){
     }
 });
 
-// On Click of the Del Button the button color will change
-// If someone clicks for the first time it will change to "red" and if someone clicks on it again it will change to "black";
-
-let delBtn = document.querySelector(".del-btn");
-let delBtnColor = "black";
-
-delBtn.addEventListener("click", function(e){
-    if (delBtnColor == "black"){
-        delBtn.style.color = "red";
-        delBtnColor = "red";
-    }else if(delBtnColor == "red"){
-        delBtn.style.color = "black";
-        delBtnColor = "black";
-    }
-})
-
 // If the user enters anything on the task input and presses Enter a Ticket should Generate
 
 let taskInput = document.querySelector(".task-input");
@@ -66,5 +50,19 @@ function createTicket(currentValue){
 
     ticketDescription.textContent = currentValue;
 
+    ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
+
     parentTicketHolder.appendChild(ticket);
-}
+};
+
+
+let delBtn = document.querySelector(".del-btn");
+
+function delTicket(e){ // This function will ticket one or multiple tickets at a time.
+    e.target.style.border = "2px solid black";
+    let currentTicket = e.target;
+
+    delBtn.addEventListener("click", function(){
+            e.target.remove(); // Here e.target is the current Ticket.
+    });
+};
