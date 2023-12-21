@@ -14,9 +14,10 @@ html{
     display:flex;
     flex-wrap:wrap;
     margin:50px auto;
+    background-color: antiquewhite;
   }
   
   .inner{
     border:1px solid red;
-    flex-basis:33.3%;
+    flex-basis: 33.3%;
   }
