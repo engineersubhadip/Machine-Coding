@@ -1,0 +1,1 @@
+1. When the user will click on any cell, we want to show a `X` or `O`. But which cell the user has clicked, how do we get to know ? -> `Should we add CLICK Event Listeners to all the cells ?`
