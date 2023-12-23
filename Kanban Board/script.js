@@ -90,12 +90,26 @@ function delTicket(e){ // This function will ticket one or multiple tickets at a
 };
 
 function toggleLock(event){
+    const ticketDescription = event.target.parentElement.parentElement.querySelector(".ticket-description");
 
     if (event.target.classList.contains("fa-lock")){
+
         event.target.classList.remove("fa-lock");
         event.target.classList.add("fa-lock-open");
+
+        ticketDescription.setAttribute("contentEditable",true);
+
+        ticketDescription.addEventListener("keyup",function(e){
+
+            let updatedValue = ticketDescription.textContent;
+            ticketDescription.textContent = updatedValue;
+            
+        });
+        
     }else if (event.target.classList.contains("fa-lock-open")){
+
         event.target.classList.remove("fa-lock-open");
+        ticketDescription.setAttribute("contentEditable",false);
         event.target.classList.add("fa-lock");
     }
 }

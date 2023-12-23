@@ -25,3 +25,9 @@ For every ticket we are generating inside the `createTicket` we are adding an EV
 
 11. Implemented a functionality that if the user clicks on the lock/unlock button , it gives us a toggle functionality. We implemented this by check if the current button as class `fa-lock` then remove `fa-lock` and apply `fa-lock-open` to the classlist. 
 If the button has `fa-lock-open` then remove it and apply `fa-lock`.
+
+
+12. Added the implementation that in a ticket if the user clicks on the lock button, it will unlock and the user will be able to edit the ticket description. Then again if the user clicks on the unlock button. The ticket will be locked and the updated content will be shown.
+Implementation :- When the user clicks on the LOCK button, I am making the lock button Unlocked and in the `ticket-description` I am setting an attribute that `contentEditable="true"`. Now I am adding an Event Listener on the ticket description and getting what the user has typed in and making the textContent equivalent to the updated text.
+
+Now currently the button is un-locked. And as per the scenario, if the user again clicks on the Button I am making the button `Lock` and setting the attribute value of `ticket-description` as `false`.
