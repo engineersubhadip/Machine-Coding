@@ -1,0 +1,28 @@
+html{
+    box-sizing: border-box;
+}
+
+*,::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+.row{
+    height:600px;
+    width:600px;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap:2rem;
+}
+
+.inner{
+    border: 2px solid red;
+    flex-basis: 33.3%;
+    background-color: blanchedalmond;
+}
