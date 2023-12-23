@@ -70,6 +70,8 @@ function createTicket(currentValue){
 
     ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
 
+    lockUnlockImage.addEventListener("click",toggleLock);
+
     parentTicketHolder.appendChild(ticket);
 };
 
@@ -77,10 +79,23 @@ function createTicket(currentValue){
 let delBtn = document.querySelector(".del-btn");
 
 function delTicket(e){ // This function will ticket one or multiple tickets at a time.
-    e.target.style.border = "2px solid black";
+    if (e.target.classList.contains("ticket")){
+        e.target.style.border = "2px solid black"; // By doing this only when the user clicks on the ticket as a whole the border around the ticket gets applied. Other-wise if the user clicks on ticket number, lock-i=unlock button etc. The border does not gets applied.
+    }
     let currentTicket = e.target;
 
     delBtn.addEventListener("click", function(){
             e.target.remove(); // Here e.target is the current Ticket.
     });
 };
+
+function toggleLock(event){
+
+    if (event.target.classList.contains("fa-lock")){
+        event.target.classList.remove("fa-lock");
+        event.target.classList.add("fa-lock-open");
+    }else if (event.target.classList.contains("fa-lock-open")){
+        event.target.classList.remove("fa-lock-open");
+        event.target.classList.add("fa-lock");
+    }
+}

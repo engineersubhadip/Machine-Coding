@@ -20,3 +20,8 @@ Now we know that since the user has pressed ENTER then the modal container shoul
 For every ticket we are generating inside the `createTicket` we are adding an EVENT Listener of click to it and attaching a callback called `delTicket`. Inside the `delTicket` we can access which particular ticket was/were selected via `target.key`. Now we are adding an EVENT Listener of `click` to DEL Button denoting that now if the user presses the Delete Button, we are removing the `target.key`.
 
 9. Added Lock/Unlock Image during ticket creation.
+
+10. As of now if we click anything inside the ticket, a border gets applied. But we want border to get applied when the user clicks on the ticket as a whole. Currently if we click on lock/unlock button, ticket number etc the border gets applied. So what we did is inside the event Listener which is applied on the ticket, we made a check if the class List contains `ticket` then only apply the border other-wise do not.
+
+11. Implemented a functionality that if the user clicks on the lock/unlock button , it gives us a toggle functionality. We implemented this by check if the current button as class `fa-lock` then remove `fa-lock` and apply `fa-lock-open` to the classlist. 
+If the button has `fa-lock-open` then remove it and apply `fa-lock`.
