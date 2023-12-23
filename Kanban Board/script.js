@@ -19,7 +19,6 @@ addBtn.addEventListener("click", function(e){
         for (let i=0; i<priorityColorList.length; i++){
             priorityColorList[i].style.border = "";
         }
-        defaultTicketColor = undefined
     }else{
         modalContainer.style.display = "none";
         isModalHidden = true;  
