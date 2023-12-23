@@ -18,3 +18,5 @@ Now we know that since the user has pressed ENTER then the modal container shoul
 8. When the user clicks on any ticket/tickets we can now delete that/those by clicking on DEL Button.
 
 For every ticket we are generating inside the `createTicket` we are adding an EVENT Listener of click to it and attaching a callback called `delTicket`. Inside the `delTicket` we can access which particular ticket was/were selected via `target.key`. Now we are adding an EVENT Listener of `click` to DEL Button denoting that now if the user presses the Delete Button, we are removing the `target.key`.
+
+9. Added Lock/Unlock Image during ticket creation.
