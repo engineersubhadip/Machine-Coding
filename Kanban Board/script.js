@@ -4,6 +4,11 @@ let isModalHidden = true;
 let parentTicketHolder = document.querySelector(".row");
 
 let priorityColorFlag = false;
+let defaultTicketColor = "red"
+
+let priorityColor = document.querySelector(".color-priority");
+
+let priorityColorList = document.querySelectorAll(".priority-color");
 
 // On Click of the Add Btn We will show/hide the Modal
 
@@ -11,6 +16,10 @@ addBtn.addEventListener("click", function(e){
     if (isModalHidden){
         modalContainer.style.display = "flex";
         isModalHidden = false;
+        for (let i=0; i<priorityColorList.length; i++){
+            priorityColorList[i].style.border = "";
+        }
+        defaultTicketColor = undefined
     }else{
         modalContainer.style.display = "none";
         isModalHidden = true;  
@@ -21,16 +30,15 @@ addBtn.addEventListener("click", function(e){
 
 let taskInput = document.querySelector(".task-input");
 
-let priorityColor = document.querySelector(".color-priority");
-
-let priorityColorList = document.querySelectorAll(".priority-color");
-
 priorityColor.addEventListener("click",function(e){
     if(e.target.classList.contains("priority-color")){
         for (let i=0; i<priorityColorList.length; i++){
             priorityColorList[i].style.border = "";
         }
+        defaultTicketColor = undefined
         e.target.style.border = "12px solid purple";
+        defaultTicketColor = e.target.classList[1];
+        console.log(defaultTicketColor);
     }
 })
 
@@ -43,7 +51,7 @@ taskInput.addEventListener("keyup",function(e){
     // colorPriority.addEventListener("click",function(event){
     if (e.key == "Enter"){
         let currentValue = taskInput.value;
-        createTicket(currentValue);
+        createTicket(currentValue,defaultTicketColor);
         modalContainer.style.display = "none";
         isModalHidden = true;
         taskInput.value = "";
@@ -52,7 +60,7 @@ taskInput.addEventListener("keyup",function(e){
 })
 
 
-function createTicket(currentValue){
+function createTicket(currentValue,defaultTicketColor){
     var uid = new ShortUniqueId();
     let id = uid.rnd();
     let ticket = document.createElement("div");
@@ -78,7 +86,7 @@ function createTicket(currentValue){
 
     ticketNumber.textContent = `#${id}`;
     ticketNumber.style.backgroundColor = "#CCC098";
-    bannerColor.style.backgroundColor = "greenyellow";
+    bannerColor.style.backgroundColor = defaultTicketColor;
     ticketDescription.textContent = currentValue;
 
     ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
