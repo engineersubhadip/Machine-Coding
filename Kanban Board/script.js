@@ -54,7 +54,7 @@ function createTicket(currentValue){
     bannerColor.classList.add("header-banner-color", "text-center");
     ticketNumber.classList.add("ticket-number");
     ticketDescription.classList.add("ticket-description");
-    lockUnlock.classList.add("ock-unlock");
+    lockUnlock.classList.add("lock-unlock");
     lockUnlockImage.classList.add("fa-solid","fa-lock");
 
     lockUnlock.appendChild(lockUnlockImage);
@@ -64,6 +64,7 @@ function createTicket(currentValue){
     ticket.appendChild(lockUnlock);
 
     ticketNumber.textContent = `#${id}`;
+    ticketNumber.style.backgroundColor = "#CCC098";
     bannerColor.style.backgroundColor = "greenyellow";
     ticketDescription.textContent = currentValue;
 
