@@ -31,3 +31,8 @@ If the button has `fa-lock-open` then remove it and apply `fa-lock`.
 Implementation :- When the user clicks on the LOCK button, I am making the lock button Unlocked and in the `ticket-description` I am setting an attribute that `contentEditable="true"`. Now I am adding an Event Listener on the ticket description and getting what the user has typed in and making the textContent equivalent to the updated text.
 
 Now currently the button is un-locked. And as per the scenario, if the user again clicks on the Button I am making the button `Lock` and setting the attribute value of `ticket-description` as `false`.
+
+13. Implemented a Functionality that if the user clicks on any of the Priority color a `purple` border will be applied on the color the user has selected. If the user clicks on another color, then the border will be removed from the old color and applied to the new one.
+
+We have implemented `Event Delegation` on the parent class of `color-priority` and also picked up all the colors available to us in a list . Now we have added a click Event Listener on the parent and applied a check that execute the callback if the event contains a CHILD class. We did this because if the user clicks on the parent Class. I will not execute the callback. Now once the user clicks on a specific child, we will be able to execute the callback inside the parent. Firstly, I am iterating over all the children and removing any existing border and then for the specfic element. I am applying the border. 
+Now what happens is that if the user clicks on another color, first the existing border will get removed then the new border gets applied.

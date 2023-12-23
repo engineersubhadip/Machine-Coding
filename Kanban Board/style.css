@@ -101,11 +101,15 @@ body{
 }
 
 .ticket{
+      display: flex;
+      flex-direction: column;
+      flex-wrap:wrap;
       width:15rem;
       height:10rem;
       background-color: var(--ticket-background);
       transition: transform 0.3s ease-in-out;
       position: relative;
+      overflow: auto;
 }
 
 
@@ -121,6 +125,10 @@ body{
       position: absolute;
       bottom:5px;
       right:5px;
+}
+
+.ticket-description{
+      max-width: 100%;
 }
 
 /* Modal Container */

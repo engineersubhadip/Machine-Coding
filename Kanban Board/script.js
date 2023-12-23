@@ -3,6 +3,8 @@ let modalContainer = document.querySelector(".modal-container");
 let isModalHidden = true;
 let parentTicketHolder = document.querySelector(".row");
 
+let priorityColorFlag = false;
+
 // On Click of the Add Btn We will show/hide the Modal
 
 addBtn.addEventListener("click", function(e){
@@ -19,7 +21,18 @@ addBtn.addEventListener("click", function(e){
 
 let taskInput = document.querySelector(".task-input");
 
-let priorityColor = document.querySelectorAll(".priority-color");
+let priorityColor = document.querySelector(".color-priority");
+
+let priorityColorList = document.querySelectorAll(".priority-color");
+
+priorityColor.addEventListener("click",function(e){
+    if(e.target.classList.contains("priority-color")){
+        for (let i=0; i<priorityColorList.length; i++){
+            priorityColorList[i].style.border = "";
+        }
+        e.target.style.border = "12px solid purple";
+    }
+})
 
 
 taskInput.addEventListener("keyup",function(e){
