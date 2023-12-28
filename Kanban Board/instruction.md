@@ -55,3 +55,5 @@ We are maintaining a global list called `ticketList`. This array will store the 
 SubTask One :- When the user is clicking on the Delete Button, I am removing the ticket from the `ticketList` array and updating the `local Storage` as well.
 
 SubTask Two :- When the user is clicking on the Ticket banner color, I am updating the particular ticket's color in the array as well as the local storage.
+
+SubTask Three :- When the user clicks on Lock and Unlock Button and edits the ticket description, we have also added the check that the corresponding ticket in the `ticketList` array also gets the updated description and the local Storage as well.

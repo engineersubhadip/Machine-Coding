@@ -158,7 +158,6 @@ function delTicket(e){ // This function will ticket one or multiple tickets at a
 
             for (let i=0; i<ticketList.length; i++){
                 let currentTicket = ticketList[i];
-                console.log(currentTicket.ticketNumber);
                 if (currentTicket.ticketNumber == targetIndex){
                     deletionIndex = i;
                     break;
@@ -192,11 +191,34 @@ function toggleLock(event){
         event.target.classList.add("fa-lock-open");
 
         ticketDescription.setAttribute("contentEditable",true);
+
+
         
     }else if (event.target.classList.contains("fa-lock-open")){
 
         event.target.classList.remove("fa-lock-open");
         ticketDescription.setAttribute("contentEditable",false);
         event.target.classList.add("fa-lock");
+
+        // At this point we also have to update the content for the current ticket inside the ticket List Array.
+
+        let currentTicketNumber = event.target.parentElement.parentElement.querySelector(".ticket-number").textContent;
+        let currentTicketDescription = event.target.parentElement.parentElement.querySelector(".ticket-description").textContent;
+
+        let targetTicketIndex = undefined;
+
+        for (let i=0; i<ticketList.length; i++){
+            let runTicketNumber = ticketList[i].ticketNumber;
+            if (runTicketNumber == currentTicketNumber){
+                targetTicketIndex = i;
+                break;
+            };
+        };
+
+        ticketList[targetTicketIndex].ticketDescription = currentTicketDescription;
+        
+        // We will also update the local storage at this point:-
+
+        localStorage.setItem("Array",JSON.stringify(ticketList));
     }
 }
