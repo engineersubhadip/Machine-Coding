@@ -93,17 +93,17 @@ function createTicket(currentValue,defaultTicketColor){
     bannerColor.style.backgroundColor = defaultTicketColor;
     ticketDescription.textContent = currentValue;
 
-    ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue});
+    parentTicketHolder.appendChild(ticket);
+
+    ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue}); // Storing the newly created ticket in the ticket List Array
     
-    // Storing in the Local Storage:-
+    // Storing the newly created ticket in the Local Storage:-
 
     localStorage.setItem("Array",JSON.stringify(ticketList));
 
     ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
 
     lockUnlockImage.addEventListener("click",toggleLock);
-
-    parentTicketHolder.appendChild(ticket);
 
     bannerColor.addEventListener("click",function(e){
         let currentColor = bannerColor.style.backgroundColor;
