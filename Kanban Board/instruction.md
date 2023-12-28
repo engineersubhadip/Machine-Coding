@@ -53,3 +53,5 @@ We made sure in the `delTicket()` we are selecting the whole ticket by making su
 We are maintaining a global list called `ticketList`. This array will store the details of the tickets. And we will push this ticket array in the local storage. So that we can reference it later.
 
 SubTask One :- When the user is clicking on the Delete Button, I am removing the ticket from the `ticketList` array and updating the `local Storage` as well.
+
+SubTask Two :- When the user is clicking on the Ticket banner color, I am updating the particular ticket's color in the array as well as the local storage.

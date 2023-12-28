@@ -87,6 +87,7 @@ function createTicket(currentValue,defaultTicketColor){
     ticket.appendChild(ticketDescription);
     ticket.appendChild(lockUnlock);
 
+
     ticketNumber.textContent = `${id}`;
     ticketNumber.style.backgroundColor = "#CCC098";
     bannerColor.style.backgroundColor = defaultTicketColor;
@@ -114,6 +115,24 @@ function createTicket(currentValue,defaultTicketColor){
         let nextColor = color[nextColorIndex];
 
         bannerColor.style.backgroundColor = nextColor;
+
+        // we should also update the color of the ticket in the ticket List array as well as the local Storage:-
+
+        // We will have to find out the ticket we are changing color from the ticket List Array
+
+        let currentTicket = ticket.querySelector(".ticket-number").textContent;
+        let updateTicketColorIndex = undefined;
+        
+        for (let i=0; i<ticketList.length; i++){
+            let runTicket = ticketList[i].ticketNumber;
+            if (runTicket == currentTicket){
+                updateTicketColorIndex = i;
+            };
+        };
+
+        ticketList[updateTicketColorIndex].bannerColor = nextColor;
+        
+        localStorage.setItem("Array",JSON.stringify(ticketList));
     });
 };
 
