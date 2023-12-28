@@ -192,13 +192,6 @@ function toggleLock(event){
         event.target.classList.add("fa-lock-open");
 
         ticketDescription.setAttribute("contentEditable",true);
-
-        ticketDescription.addEventListener("keyup",function(e){
-
-            let updatedValue = ticketDescription.textContent;
-            ticketDescription.textContent = updatedValue;
-            
-        });
         
     }else if (event.target.classList.contains("fa-lock-open")){
 
