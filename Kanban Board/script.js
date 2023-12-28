@@ -112,14 +112,18 @@ function createTicket(currentValue,defaultTicketColor){
 let delBtn = document.querySelector(".del-btn");
 
 function delTicket(e){ // This function will ticket one or multiple tickets at a time.
+    // Also if the user is just clicking on the color, description, lock-unlock. Then the user will not be able to delete the ticket. Only if the user is clicking on the ticket as a whole then only he/she can delete the ticket.
+    
     if (e.target.classList.contains("ticket")){
-        e.target.style.border = "2px solid black"; // By doing this only when the user clicks on the ticket as a whole the border around the ticket gets applied. Other-wise if the user clicks on ticket number, lock-i=unlock button etc. The border does not gets applied.
-    }
-    let currentTicket = e.target;
 
-    delBtn.addEventListener("click", function(){
-            e.target.remove(); // Here e.target is the current Ticket.
-    });
+        e.target.style.border = "2px solid black"; // By doing this only when the user clicks on the ticket as a whole the border around the ticket gets applied. Other-wise if the user clicks on ticket number, lock-i=unlock button etc. The border does not gets applied.
+
+        let currentTicket = e.target;
+        delBtn.addEventListener("click", function(){
+                e.target.remove(); // Here e.target is the current Ticket.
+        });
+    }
+
 };
 
 function toggleLock(event){

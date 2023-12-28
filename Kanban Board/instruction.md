@@ -44,3 +44,6 @@ We have made `defaultTicketColor = "red"`. And when the user is clicking `Enter`
 We have maintained a global array called `color` and `color = ["red","blue","green","black"];`
 
 Now inside the `createTicket` function, we have added an Event Listener on the `bannerColor`. We are first getting the current color, then we are getting the index of the current color from the `color` array. Now, we are finding the next color using ` let nextColorIndex = (currentColorIndex+1) % (color.length);`. By doing this we are making sure, it does not overflow. And then we are updating the currentBanner color with the updated one. When the user will click on the ticket banner color, he/she will be able to select any color he/she wants to.
+
+15. Fixed a bug related to delete functionality. As of now when we click on any part of the ticket, then that part may not be selected. But upon clicking on that delete button, the user will be able to delete that part of the ticket. What we want is only when the user is selecting the ticket as a whole, then only he/she will be able to delete the ticket and not just subpart of the ticket.
+We made sure in the `delTicket()` we are selecting the whole ticket by making sure `e.target.classList.contains("ticket")`. Then we are adding the Event listener on the Delete Button to delete the whole ticket.
