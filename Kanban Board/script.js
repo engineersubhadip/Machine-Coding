@@ -7,8 +7,10 @@ let priorityColorFlag = false;
 let defaultTicketColor = "red"
 
 let priorityColor = document.querySelector(".color-priority");
-
 let priorityColorList = document.querySelectorAll(".priority-color");
+
+let color = ["red","blue","green","black"]; // Using this array we will be able to toggle the priority colors on top of each ticket
+
 
 // On Click of the Add Btn We will show/hide the Modal
 
@@ -37,7 +39,6 @@ priorityColor.addEventListener("click",function(e){
         defaultTicketColor = undefined
         e.target.style.border = "12px solid purple";
         defaultTicketColor = e.target.classList[1];
-        console.log(defaultTicketColor);
     }
 })
 
@@ -93,6 +94,18 @@ function createTicket(currentValue,defaultTicketColor){
     lockUnlockImage.addEventListener("click",toggleLock);
 
     parentTicketHolder.appendChild(ticket);
+
+    bannerColor.addEventListener("click",function(e){
+        let currentColor = bannerColor.style.backgroundColor;
+        
+        let currentColorIndex = color.indexOf(currentColor);
+
+        let nextColorIndex = (currentColorIndex+1) % (color.length);
+
+        let nextColor = color[nextColorIndex];
+
+        bannerColor.style.backgroundColor = nextColor;
+    })
 };
 
 

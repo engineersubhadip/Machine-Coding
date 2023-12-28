@@ -38,3 +38,9 @@ We have implemented `Event Delegation` on the parent class of `color-priority` a
 Now what happens is that if the user clicks on another color, first the existing border will get removed then the new border gets applied.
 
 We have made `defaultTicketColor = "red"`. And when the user is clicking `Enter` in the task input if lets say we are not clicking on any color we are sending ` createTicket(currentValue,defaultTicketColor)`. And if lets say if the user has selected any color we are sending that color as `defaultTicketColor`. Also, when the user is clicking on the ADD Button I am clearing out the existing border applied on the priority color. By Doing this we are removing the last selected color from the palette.
+
+
+14. We have implemented the functionality that when the user clicks on top of any ticket color, the ticket color will change.
+We have maintained a global array called `color` and `color = ["red","blue","green","black"];`
+
+Now inside the `createTicket` function, we have added an Event Listener on the `bannerColor`. We are first getting the current color, then we are getting the index of the current color from the `color` array. Now, we are finding the next color using ` let nextColorIndex = (currentColorIndex+1) % (color.length);`. By doing this we are making sure, it does not overflow. And then we are updating the currentBanner color with the updated one. When the user will click on the ticket banner color, he/she will be able to select any color he/she wants to.
