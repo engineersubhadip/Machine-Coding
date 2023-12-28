@@ -47,3 +47,9 @@ Now inside the `createTicket` function, we have added an Event Listener on the `
 
 15. Fixed a bug related to delete functionality. As of now when we click on any part of the ticket, then that part may not be selected. But upon clicking on that delete button, the user will be able to delete that part of the ticket. What we want is only when the user is selecting the ticket as a whole, then only he/she will be able to delete the ticket and not just subpart of the ticket.
 We made sure in the `delTicket()` we are selecting the whole ticket by making sure `e.target.classList.contains("ticket")`. Then we are adding the Event listener on the Delete Button to delete the whole ticket.
+
+16. We are now implementing the functionality that if the user refreshes the browser or comes back later on, all the details of the previous ticket will be there in the UI.
+
+We are maintaining a global list called `ticketList`. This array will store the details of the tickets. And we will push this ticket array in the local storage. So that we can reference it later.
+
+SubTask One :- When the user is clicking on the Delete Button, I am removing the ticket from the `ticketList` array and updating the `local Storage` as well.
