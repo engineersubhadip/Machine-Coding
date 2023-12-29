@@ -11,7 +11,11 @@ let priorityColorList = document.querySelectorAll(".priority-color");
 
 let color = ["red","blue","green","black"]; // Using this array we will be able to toggle the priority colors on top of each ticket
 
-let ticketList = []; // Using this array we will store the details of all the generated tickets. And then push this ticket array in the local storage and if the user comes back to the browser after (closing/refresh) we can have the details of the previous tickets.
+
+let ticketList = localStorage.getItem("Array") ? JSON.parse(localStorage.getItem("Array")) : []; // Using this array we will store the details of all the generated tickets. And then push this ticket array in the local storage and if the user comes back to the browser after (closing/refresh) we can have the details of the previous tickets.
+ticketList.forEach(t => createTicket(t.ticketDescription, t.bannerColor, t.ticketNumber))
+
+let localStorageFlag = false;
 
 // On Click of the Add Btn We will show/hide the Modal
 
@@ -47,10 +51,6 @@ priorityColor.addEventListener("click",function(e){
 
 taskInput.addEventListener("keyup",function(e){
 
-    // Now we will select the color from color Priority:-
-    // let colorPriority = document.querySelector(".color-priority");
-
-    // colorPriority.addEventListener("click",function(event){
     if (e.key == "Enter"){
         let currentValue = taskInput.value;
         createTicket(currentValue,defaultTicketColor);
@@ -59,13 +59,13 @@ taskInput.addEventListener("keyup",function(e){
         isModalHidden = true;
         taskInput.value = "";
         }
-    // })
+    
 })
 
 
-function createTicket(currentValue,defaultTicketColor){
+function createTicket(currentValue,TicketColor, ticketId){
     var uid = new ShortUniqueId();
-    let id = uid.rnd();
+    let id = ticketId || uid.rnd();
     let ticket = document.createElement("div");
     let bannerColor = document.createElement("div");
     let ticketNumber = document.createElement("div");
@@ -87,19 +87,13 @@ function createTicket(currentValue,defaultTicketColor){
     ticket.appendChild(ticketDescription);
     ticket.appendChild(lockUnlock);
 
-
+    
     ticketNumber.textContent = `${id}`;
     ticketNumber.style.backgroundColor = "#CCC098";
-    bannerColor.style.backgroundColor = defaultTicketColor;
+    bannerColor.style.backgroundColor = TicketColor;
     ticketDescription.textContent = currentValue;
-
     parentTicketHolder.appendChild(ticket);
-
-    ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue}); // Storing the newly created ticket in the ticket List Array
     
-    // Storing the newly created ticket in the Local Storage:-
-
-    localStorage.setItem("Array",JSON.stringify(ticketList));
 
     ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
 
@@ -134,6 +128,16 @@ function createTicket(currentValue,defaultTicketColor){
         
         localStorage.setItem("Array",JSON.stringify(ticketList));
     });
+  
+if(ticketId == null){   // So if the user is coming from local storage we will not store the details in the Array. If the user is creating a new ticket then we will push the ticket in the array and update the local storage.
+    
+    
+    ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue}); // Storing the newly created ticket in the ticket List Array
+    
+// Storing the newly created ticket in the Local Storage:-
+
+     localStorage.setItem("Array",JSON.stringify(ticketList));
+}   
 };
 
 
