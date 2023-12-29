@@ -262,7 +262,7 @@ filter.addEventListener("click",function(e){
 
         let hexColorSelected = rgbToHex(divColor);
         
-        let targetColorSearch = undefined;
+        let targetColorSearch = undefined;// will fetch the string value of the corresponding HEX Code.
 
         if (hexColorSelected == "#ff0000"){
             targetColorSearch = "red";
