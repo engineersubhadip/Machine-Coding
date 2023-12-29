@@ -63,6 +63,7 @@ taskInput.addEventListener("keyup",function(e){
 })
 
 
+
 function createTicket(currentValue,TicketColor, ticketId){
     var uid = new ShortUniqueId();
     let id = ticketId || uid.rnd();
@@ -94,6 +95,16 @@ function createTicket(currentValue,TicketColor, ticketId){
     ticketDescription.textContent = currentValue;
     parentTicketHolder.appendChild(ticket);
     
+
+    if(ticketId == null){   // So if the user is coming from local storage we will not store the details in the Array. If the user is creating a new ticket then we will push the ticket in the array and update the local storage.
+    
+    
+        ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue}); // Storing the newly created ticket in the ticket List Array
+        
+    // Storing the newly created ticket in the Local Storage:-
+    
+        localStorage.setItem("Array",JSON.stringify(ticketList));
+    }
 
     ticket.addEventListener("click",delTicket); // For every ticket we are generating has a click event listener attached to it.
 
@@ -129,15 +140,7 @@ function createTicket(currentValue,TicketColor, ticketId){
         localStorage.setItem("Array",JSON.stringify(ticketList));
     });
   
-if(ticketId == null){   // So if the user is coming from local storage we will not store the details in the Array. If the user is creating a new ticket then we will push the ticket in the array and update the local storage.
-    
-    
-    ticketList.push({"ticketNumber":id,"ticketNumberColor":"#CCC098","bannerColor":defaultTicketColor,"ticketDescription":currentValue}); // Storing the newly created ticket in the ticket List Array
-    
-// Storing the newly created ticket in the Local Storage:-
-
-     localStorage.setItem("Array",JSON.stringify(ticketList));
-}   
+   
 };
 
 
@@ -224,3 +227,61 @@ function toggleLock(event){
         localStorage.setItem("Array",JSON.stringify(ticketList));
     }
 }
+
+
+// Converting RGB to HEX:-
+
+function rgbToHex(divColor){
+    const rgbArray = divColor.match(/\d+/g);
+
+    // Convert RGB components to hexadecimal
+    const hexArray = rgbArray.map(component => {
+    const hex = parseInt(component).toString(16);
+    return hex.length === 1 ? '0' + hex : hex; // Ensure two digits for each component
+    });
+
+    // Combine the hexadecimal values to form the final hex color code
+    const hexColor = '#' + hexArray.join('');
+
+    return hexColor;
+}
+
+// Filtering Functionality :-
+
+let ticketListDom = document.querySelectorAll(".ticket");
+
+let filter = document.querySelector(".tool-box-priority-container");
+
+filter.addEventListener("click",function(e){
+    if (e.target.classList.contains("color")){
+        let currDiv = e.target;
+        let computedStyle = window.getComputedStyle(currDiv);
+        let divColor = computedStyle.backgroundColor;
+
+
+        let hexColorSelected = rgbToHex(divColor);
+        
+        let targetColorSearch = undefined;
+
+        if (hexColorSelected == "#ff0000"){
+            targetColorSearch = "red";
+        }else if (hexColorSelected == "#0000ff"){
+            targetColorSearch = "blue";
+        }else if (hexColorSelected == "#adff2f"){
+            targetColorSearch = "green";
+        }else if (hexColorSelected == "#000000"){
+            targetColorSearch = "black";
+        }
+
+        for (let i=0; i<ticketListDom.length; i++){
+            
+            let currColor = ticketListDom[i].querySelector(".header-banner-color").style.backgroundColor;
+            
+            if (currColor == targetColorSearch){
+                ticketListDom[i].style.display = "flex";
+            }else{
+                ticketListDom[i].style.display = "none";
+            }
+        }
+    }
+})
