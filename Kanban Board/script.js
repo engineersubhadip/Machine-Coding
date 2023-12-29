@@ -172,8 +172,6 @@ function delTicket(e){ // This function will ticket one or multiple tickets at a
 
             ticketList.splice(deletionIndex,1);
 
-            console.log(ticketList);
-
             // Also we have to update the Local Storage as well:-
 
             localStorage.setItem("Array",JSON.stringify(ticketList));
