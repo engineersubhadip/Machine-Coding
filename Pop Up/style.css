@@ -1,0 +1,59 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding:0;
+    background-color: #EFDFCC;
+}
+
+.row-one{
+    height:300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row-one .submit-btn button{
+    position: relative;
+    font-size: large;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.row-two{
+    height:200px;
+    width:300px;
+    position: fixed;
+    top:20vh;
+    left:450px;
+    display: none;
+    z-index: 2;
+}
+
+.pop-up{
+    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding:1rem;
+    background-color: #DCC3A1;
+    font-size: 1.2rem;
+    line-height: 2.25rem;
+}
+
+.ok-btn {
+    width:100%;
+}
+
+.ok-btn button{
+    width:100%;
+}
