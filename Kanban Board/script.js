@@ -248,12 +248,13 @@ function rgbToHex(divColor){
 
 // Filtering Functionality :-
 
-let ticketListDom = document.querySelectorAll(".ticket");
-
 let filter = document.querySelector(".tool-box-priority-container");
 
 filter.addEventListener("click",function(e){
+
     if (e.target.classList.contains("color")){
+        addBtn.style.display = "none";
+        let ticketListDom = document.querySelectorAll(".ticket");
         let currDiv = e.target;
         let computedStyle = window.getComputedStyle(currDiv);
         let divColor = computedStyle.backgroundColor;
@@ -283,5 +284,17 @@ filter.addEventListener("click",function(e){
                 ticketListDom[i].style.display = "none";
             }
         }
+    }
+});
+
+// Show All tickets functionality :-
+
+let showAllBtn = document.querySelector(".show-btn button");
+
+showAllBtn.addEventListener("click",function(e){
+    let ticketListDom = document.querySelectorAll(".ticket");
+    addBtn.style.display = "flex"
+    for (let i=0; i<ticketListDom.length; i++){
+        ticketListDom[i].style.display = "flex";
     }
 })
