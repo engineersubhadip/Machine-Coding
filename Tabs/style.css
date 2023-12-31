@@ -1,0 +1,26 @@
+html{
+  box-sizing: border-box;
+}
+
+*,*::before,::after{
+  box-sizing: inherit;
+}
+
+body{
+  margin:0;
+  padding: 0;
+}
+
+.header{
+  display: flex;
+  gap:2rem;
+  padding: 2rem;
+}
+
+.description{
+  display: none;
+}
+
+.description.home-content{
+  display: block;
+}
