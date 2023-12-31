@@ -26,12 +26,14 @@ subBtn.addEventListener("click",function(e){
 
     if (userValue >= 1 && userValue <= 10){
         finalOutput = finalOutput - userValue;
-
-        if (finalOutput < 0){
-            finalDisplay.textContent = 0;
-            finalOutput = 0;
-        }else{
-            finalDisplay.textContent = finalOutput;
-        }
+        finalDisplay.textContent = finalOutput;
+        
     };
 });
+
+let resetBtn = document.querySelector("#reset");
+
+resetBtn.addEventListener("click",function(e){
+    finalDisplay.textContent = 0;
+    finalOutput = 0;
+})
