@@ -1,0 +1,37 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+h3{
+    margin-bottom: 4rem;
+}
+
+#container{
+    border:2px solid red;
+}
+
+
+.header{
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border: 2px solid greenyellow;
+    background-color: brown;
+}
+
+.header:hover{
+    cursor:pointer;
+}
+
+.description{
+    display: none;
+}
