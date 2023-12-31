@@ -16,8 +16,21 @@ selectedAccordian.addEventListener("click",function(e){
                 descriptionList[i].querySelector(".description").style.display = "block";
             }else{
                 descriptionList[i].querySelector(".description").style.display = "none";
-            }
-        }
+            };
+        };
         
-    }
-})
+    };
+});
+
+selectedAccordian.addEventListener("dblclick",function(e){
+    if (e.target.classList.contains("header")){
+        
+        for (let i=0; i<descriptionList.length; i++){
+
+            
+            descriptionList[i].querySelector(".description").style.display = "none";
+
+        };
+        
+    };
+});
