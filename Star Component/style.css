@@ -1,0 +1,30 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before, *::after{
+    box-sizing: inherit;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.star-container{
+    display: flex;
+}
+
+.star{
+    font-size: 2.5rem;
+}
+
+.star:hover{
+    cursor:pointer;
+}
+
+.active{
+    color:goldenrod;
+}
