@@ -13,18 +13,17 @@ let selectedIndex = undefined;
 starParent.addEventListener("click",function(e){
     if (e.target.classList.contains("star")){
 
-        let selectedStar = e.target;
         selectedIndex = e.target.getAttribute("position");
 
-        for (let k=0; k<starList.length; k++){
+        for (let k=0; k<starList.length; k++){  // Firstly we are removing existing applied active classes
             starList[k].classList.remove("active");
         }
         
-        for (let j=0; j<selectedIndex; j++){
+        for (let j=0; j<selectedIndex; j++){ // Now we are applying active class till the desired position
             starList[j].classList.add("active");
         }
 
-        ratingCounter.innerText = `Rating : ${selectedIndex}`;
+        ratingCounter.innerText = `Rating : ${selectedIndex}`; // Updating the Rating
     };
 });
 
@@ -54,11 +53,11 @@ starParent.addEventListener("mouseout",function(e){
         
         let targetStar = e.target.getAttribute("position");
 
-        for (let i=0; i<targetStar; i++){
+        for (let i=0; i<targetStar; i++){ // Removing active class from all the Stars
             starList[i].classList.remove("active");
         }
 
-        if (selectedIndex != undefined){
+        if (selectedIndex != undefined){ // If the user has already clicked on any star icon, we are not supposed to remove active class till the star he has clicked. So we are adding the active class till the star user has clicked on.
             for (let j=0; j<selectedIndex; j++){
                 starList[j].classList.add("active");
             }
