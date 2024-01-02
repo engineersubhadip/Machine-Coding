@@ -24,3 +24,6 @@ starParent.addEventListener("click",function(e){
         ratingCounter.innerText = `Rating : ${selectedIndex}`;
     };
 });
+
+// Upon Hovering, we will implement active class till the icon where the cursor is currently. But not update the Rating value
+
