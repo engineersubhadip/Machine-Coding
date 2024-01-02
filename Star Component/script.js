@@ -6,6 +6,8 @@ let starList = document.querySelectorAll(".star");
 
 let ratingCounter = document.querySelector(".rating");
 
+// Upon Clicking on the Star Icon, my rating will update likewise
+
 starParent.addEventListener("click",function(e){
     if (e.target.classList.contains("star")){
         let selectedStar = e.target;
@@ -20,5 +22,5 @@ starParent.addEventListener("click",function(e){
         }
 
         ratingCounter.innerText = `Rating : ${selectedIndex}`;
-    }
-})
+    };
+});
