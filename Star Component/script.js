@@ -28,25 +28,22 @@ starParent.addEventListener("click",function(e){
 });
 
 // Upon Hovering, we will implement active class till the icon where the cursor is currently. But not update the Rating value
+// Mouse Over will just paint the star while hovering
 
 starParent.addEventListener("mouseover",function(e){
     if (e.target.classList.contains("star")){
         
         let targetStar = e.target.getAttribute("position");
 
-        // Remove the old:-
-
-        for (let i=0; i<starList.length; i++){
-            starList[i].classList.remove("active");
-        }
-
-        // Add the new active class till the target star
-
-        for (let j=0; j<targetStar;j++){
-            starList[j].classList.add("active");
+        if (selectedIndex == undefined){
+            for (let i=0; i<targetStar;i++){
+                starList[i].classList.add("active");
+            }
         }
     };
 });
+
+// Mouse Out will de-paint the start when you move out
 
 starParent.addEventListener("mouseout",function(e){
     if (e.target.classList.contains("star")){
