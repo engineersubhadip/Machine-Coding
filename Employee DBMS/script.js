@@ -29,10 +29,14 @@ function createEmployee(element){
     // Adding the inner Text Content:-
 
     name.innerText = element.firstName+" "+element.lastName;
+    employeeHolder.setAttribute("empid",element.id);
 
     // Returning the Employee Holder:-
 
     employeeList.push({empID:element.id});
+
+    employeeHolder.addEventListener("click",showDetails); // For displaying the Employee Information on the right side
+
     return employeeHolder;
 }
 
@@ -56,15 +60,15 @@ function fillEmployeeDetails(empID){
 
     // Create the Elements :-
 
-    let h3 = document.createElement("h3");
+    let h2 = document.createElement("h2");
     let empImage = document.createElement("div");
-    let image = document.createElement("image");
+    let image = document.createElement("img");
     let empName = document.createElement("div");
-    let span = document.createElement("span");
+    // let span = document.createElement("span");
     let address = document.createElement("div");
     let email = document.createElement("div");
-    let mobile = document.createElement("div");
-    let span2 = document.createElement("span");
+    let cell = document.createElement("div");
+    // let span2 = document.createElement("span");
     let dob = document.createElement("div");
 
     // Adding the Classes :-
@@ -73,31 +77,33 @@ function fillEmployeeDetails(empID){
     empName.classList.add("employee-name");
     address.classList.add("address");
     email.classList.add("email");
-    mobile.classList.add("mobile");
+    cell.classList.add("mobile");
     dob.classList.add("dob");
 
     // Appending the Children :-
     empImage.appendChild(image);
-    empName.appendChild(span);
-    mobile.appendChild(span2);
+    // empName.appendChild(span);
+    // cell.appendChild(span2);
 
-    empDetails.appendChild(h3);
+    empDetails.appendChild(h2);
     empDetails.appendChild(empImage);
     empDetails.appendChild(empName);
     empDetails.appendChild(address);
     empDetails.appendChild(email);
-    empDetails.appendChild(mobile);
+    empDetails.appendChild(cell);
     empDetails.appendChild(dob);
 
     // Adding the inner Text :-
+    console.log(targetEmployee);
 
+    h2.innerText = "Employee Details"
     image.src = targetEmployee.imageUrl;
-    empName.innerText = targetEmployee.firstName+" "+targetEmployee.lastName;
-    span.innerText = targetEmployee.age;
+    empName.innerText = `${targetEmployee.firstName.toUpperCase()} ${targetEmployee.lastName.toUpperCase()} (${targetEmployee.age})`;
+    // span.innerText = targetEmployee.age;
     address.innerText = targetEmployee.address;
     email.innerText = targetEmployee.email;
-    mobile.innerText = "Mobile - "
-    span2.innerText = targetEmployee.contactNumber;
+    cell.innerText = `Mobile - ${targetEmployee.contactNumber}`
+    // span2.innerText = targetEmployee.contactNumber;
     dob.innerText = targetEmployee.dob;
 }
 
@@ -107,4 +113,20 @@ for (let i=0; i<data.length; i++){
     empContainer.appendChild(runningChild);
 }
 
-console.log(employeeList);
+function showDetails(e){
+    if (e.target.classList.contains("employee") || e.target.classList.contains("name")){
+
+        let employeeClicked = undefined;
+
+        if (e.target.classList.contains("name")){
+            employeeClicked = e.target.parentElement;
+        }else{
+            employeeClicked = e.target;
+        }
+        let employeeID = employeeClicked.getAttribute("empid");
+        
+        empDetails.innerText = "";
+
+        fillEmployeeDetails(employeeID);
+    }
+}

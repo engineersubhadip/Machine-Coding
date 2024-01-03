@@ -18,26 +18,54 @@ body{
 }
 
 #employee-container{
-    border:2px solid red;
+    /* border:2px solid red; */
     flex-basis: 40%;
     overflow-y:auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    gap:1.25rem;
 }
 
 .employee{
     display: flex;
     justify-content: space-between;
     font-size: 1.25rem;
-    border:2px solid blue;
+    /* border:2px solid blue; */
+    height:3rem;
+    padding:10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.employee:hover{
+    cursor:pointer
 }
 
 #employee-details{
-    flex-basis: 60%;
+    flex-basis: 65%;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
+    gap:1rem;
 }
 
-hr{
-    color: black;
+#employee-details .employee-image{
+    height:110px;
+    width:110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#employee-details .employee-image img{
+    height:100%;
+    width:100%;
+    
+}
+
+#employee-details .employee-name{
+    font-size: 1.25rem;
+    font-weight: 800;
 }
