@@ -1,8 +1,12 @@
 let employeeList = [];
 
+let parentContainer = document.querySelector("#parent-container");
+
 let empContainer = document.querySelector("#employee-container");//left-side
 
 let empDetails = document.querySelector("#employee-details"); //right-side
+
+let empForm = document.querySelector(".empForm");
 
 function createEmployee(element){
     // Create the Element :-
@@ -170,3 +174,14 @@ function delRecord(e){
         }
     };
 };
+
+// Whenever the user will  click on the Add Button. I want to display the Employee Form and switch off the parent-container:-
+
+let addEmployee = document.querySelector("#add-employee");
+
+addEmployee.addEventListener("click",function(e){
+    if (e.target.classList.contains("new-employee-btn")){
+        parentContainer.style.display = "none";
+        empForm.style.display = "flex";
+    }
+})
