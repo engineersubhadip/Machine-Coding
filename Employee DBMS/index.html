@@ -10,6 +10,11 @@
 <body>
     <h2>Employee DataBase Management</h2>
 
+    <div id="add-employee">
+        <button>Add Employee</button>
+    </div>
+
+
     <div id="parent-container">
 
         <div id="employee-container">
@@ -48,7 +53,56 @@
 
     </div>
 
+    <form class="empForm" onsubmit = "submitForm(event)">
+        <div class="field">
+            <label for="imageUrl">Paste your profile pic: </label>
+            <input class="ipField" type="text" name="imageUrl" id="imageUrl" align="right">
+        </div>
 
+        <div class="field">
+            <label for="firstName">Enter First Name: </label>
+            <input class="ipField" type="text" name="firstName" id="firstName">
+        </div>
+
+        <div class="field"> 
+            <label for="lastName">Enter Last Name: </label>
+            <input class="ipField" type="text" name="lastName" id="lastName">
+        </div>
+
+        <div class="field">
+            <label for="email">Enter email ID: </label>
+            <input class="ipField" type="email" name="email" id="email">
+        </div>
+
+        <div class="field">
+            <label for="contactNumber">Enter phone number: </label>
+            <input class="ipField" type="text" name="contactNumber" id="contactNumber">
+        </div>
+
+        <div class="field"> 
+            <label for="age">Enter age: </label>
+            <input class="ipField" type="number" name="age" id="age">
+        </div>
+
+        <div class="field">
+            <label for="dob">Enter DOB: </label>
+            <input class="ipField" type="date" name="dob" id="dob">
+        </div>
+
+        <div class="field">
+            <label for="salary">Enter salary: </label>
+            <input class="ipField" type="number" name="salary" id="salary">
+        </div>
+
+        <div class="field">
+            <label for="address">Enter address: </label>
+            <input class="ipField" type="text" name="address" id="address">
+        </div>
+
+        <input class="submitBtn" type="submit">
+
+    </form>
+    
 
     <script src="data.js"></script>
     <script src="script.js"></script>

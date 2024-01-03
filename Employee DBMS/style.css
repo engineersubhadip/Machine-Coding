@@ -11,10 +11,31 @@ body{
     padding:0;
 }
 
+#add-employee{
+    display: flex;
+    justify-content: end;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+}
+
+#add-employee button{
+    height: 35px;
+    width: 150px;
+    border-radius: 10px;
+    background-color: burlywood;
+    color:black;
+    font-size: 1.25rem;
+}
+
+#add-employee button:hover{
+    cursor:pointer;
+}
+
 #parent-container{
     border:2px solid black;
     display: flex;
     height:400px;
+    position:relative;
 }
 
 #employee-container{
@@ -68,4 +89,30 @@ body{
 #employee-details .employee-name{
     font-size: 1.25rem;
     font-weight: 800;
+}
+
+.empForm{
+    border:2px solid green;
+    display: none;
+    flex-direction: column;
+    gap:1rem;
+    width:350px;
+    position: absolute;
+    top:20%;
+    left:45%;
+
+}
+
+.field{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.05rem;
+}
+
+.submitBtn{
+    background-color: blue;
+    height:50px;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.05rem;
 }
