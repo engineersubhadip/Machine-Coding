@@ -37,6 +37,8 @@ function createEmployee(element){
 
     employeeHolder.addEventListener("click",showDetails); // For displaying the Employee Information on the right side
 
+    icon.addEventListener("click",delRecord); // When the user clicks on the Delete Button
+
     return employeeHolder;
 }
 
@@ -51,13 +53,13 @@ function findTargetEmployee(empID){
         };
     };
 
-    return data[targetIndex];
+    return [data[targetIndex],targetIndex];
 }
 
 function fillEmployeeDetails(empID){
 
-    let targetEmployee = findTargetEmployee(empID);
-
+    let targetEmployee = findTargetEmployee(empID)[0];
+    console.log(targetEmployee);
     // Create the Elements :-
 
     let h2 = document.createElement("h2");
@@ -94,7 +96,6 @@ function fillEmployeeDetails(empID){
     empDetails.appendChild(dob);
 
     // Adding the inner Text :-
-    console.log(targetEmployee);
 
     h2.innerText = "Employee Details"
     image.src = targetEmployee.imageUrl;
@@ -104,7 +105,7 @@ function fillEmployeeDetails(empID){
     email.innerText = targetEmployee.email;
     cell.innerText = `Mobile - ${targetEmployee.contactNumber}`
     // span2.innerText = targetEmployee.contactNumber;
-    dob.innerText = targetEmployee.dob;
+    dob.innerText = `DOB - ${targetEmployee.dob}`;
 }
 
 for (let i=0; i<data.length; i++){
@@ -115,18 +116,58 @@ for (let i=0; i<data.length; i++){
 
 function showDetails(e){
     if (e.target.classList.contains("employee") || e.target.classList.contains("name")){
-
         let employeeClicked = undefined;
 
         if (e.target.classList.contains("name")){
             employeeClicked = e.target.parentElement;
         }else{
             employeeClicked = e.target;
-        }
-        let employeeID = employeeClicked.getAttribute("empid");
-        
-        empDetails.innerText = "";
+        };
 
+        let employeeID = employeeClicked.getAttribute("empid");
+        empDetails.innerText = "";
         fillEmployeeDetails(employeeID);
     }
 }
+
+function delRecord(e){
+    if (e.target.classList.contains("fa-regular")){
+        
+        let recordToBeDeleted = e.target.parentElement.parentElement.getAttribute("empid");
+
+
+        let indexToBeDeletedEmpList = undefined; // We will delete this record from the Emp List
+
+        indexToBeDeletedEmpList = findTargetEmployee(recordToBeDeleted)[1];
+
+        employeeList.splice(indexToBeDeletedEmpList,1); // We have removed the data from Employee List
+
+        
+        let recordFromDataList = undefined; // We will delete this record from the data.js file
+
+        recordFromDataList = findTargetEmployee(recordToBeDeleted)[0];
+
+        let indexToBeDeletedDataList = undefined;
+
+        for (let i=0; i<data.length; i++){
+            if (recordFromDataList.id == data[i].id){
+                indexToBeDeletedDataList = i;
+                break;
+            };
+        };
+
+        data.splice(indexToBeDeletedDataList,1);
+
+        e.target.parentElement.parentElement.remove();
+
+        // If I delete an employee we want to show the details of the employee who is currently sitting on the front:-
+
+        if (employeeList.length > 0){
+            let employeeAtFirst = employeeList[0];
+            empDetails.innerText = "";
+            fillEmployeeDetails(employeeAtFirst.empID);
+        }else{
+            empDetails.innerText = "";
+        }
+    };
+};
