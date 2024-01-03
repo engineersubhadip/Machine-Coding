@@ -59,7 +59,6 @@ function findTargetEmployee(empID){
 function fillEmployeeDetails(empID){
 
     let targetEmployee = findTargetEmployee(empID)[0];
-    console.log(targetEmployee);
     // Create the Elements :-
 
     let h2 = document.createElement("h2");
@@ -163,7 +162,7 @@ function delRecord(e){
         // If I delete an employee we want to show the details of the employee who is currently sitting on the front:-
 
         if (employeeList.length > 0){
-            let employeeAtFirst = employeeList[0];
+            let employeeAtFirst = employeeList[0]; // We could have also picked from the Data File
             empDetails.innerText = "";
             fillEmployeeDetails(employeeAtFirst.empID);
         }else{
