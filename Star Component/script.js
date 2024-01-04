@@ -35,11 +35,14 @@ starParent.addEventListener("mouseover",function(e){
         
         let targetStar = e.target.getAttribute("position");
 
-        if (selectedIndex == undefined){
-            for (let i=0; i<targetStar;i++){
-                starList[i].classList.add("active");
-            }
+        for (let i=0; i<starList.length; i++){
+            starList[i].classList.remove("active");
         }
+        
+        for (let i=0; i<targetStar;i++){
+            starList[i].classList.add("active");
+        }
+        
     };
 });
 
@@ -51,6 +54,7 @@ starParent.addEventListener("mouseout",function(e){
         let targetStar = e.target.getAttribute("position");
 
         for (let i=0; i<targetStar; i++){ // Removing active class from all the Stars
+            
             starList[i].classList.remove("active");
         }
 
