@@ -1,0 +1,96 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+#container{
+    border: 2px solid black;
+    margin:0 auto;
+    display: flex;
+    height:500px;
+    width:750px;
+}
+
+#left-side{
+    flex-basis: 35%;
+    border:2px solid green;
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    background-color: cadetblue;
+    overflow-y: auto;
+}
+
+#search-bar input{
+    width:100%;
+}
+
+#contact-list{
+    display: flex;
+    flex-direction: column;
+    border:2px solid red;
+    
+}
+
+.contact{
+    display: flex;
+    height:4rem;
+    border:2px solid black;
+    gap:2rem;
+}
+
+.contact-image img{
+    height:50px;
+    width:50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#right-side{
+    flex-basis: 65%;
+    border: 2px solid pink;
+    display: flex;
+    flex-direction: column;
+}
+
+#messagelist{
+    width:100%;
+    border-bottom:2px solid blue;
+    height:90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow-y: auto;
+    background-color: antiquewhite;
+}
+
+.message{
+    border:2px solid black;
+    padding:1rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 15px;
+}
+
+#send-message{
+    height:10%
+}
+
+#send-message input{
+    height:100%;
+    width:85%
+}
+
+
+#sendBtn{
+    height:60%;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+#sendBtn:hover{
+    cursor: pointer;
+}
