@@ -1,4 +1,4 @@
-const message = [
+const data = [
     {
       "id": 1,
       "title": "first title",
