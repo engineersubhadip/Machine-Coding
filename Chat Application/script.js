@@ -4,6 +4,9 @@ let contactArray = [];
 
 let messageContainer = document.querySelector("#messagelist");
 
+let sendBtn = document.querySelector("#sendBtn");
+
+
 function createContact(element){
 
     // Creating the Contact :-
@@ -55,8 +58,6 @@ for (let i=0; i<data.length; i++){
     let runningContact = createContact(data[i]);
     contactList.appendChild(runningContact);
 }
-
-console.log(contactArray);
 
 function targetContact(e){
 
@@ -114,4 +115,41 @@ function showMessage(messageElement){
     message.innerText = messageElement;
 
     return message;
+};
+
+// Upon Landing we will show the messages of the First person:-
+
+let landingContact = contactArray[0];
+
+
+let landingContactMessages = landingContact[1];
+
+for (let i=0; i<landingContactMessages.length; i++){
+    let runningMessage = landingContactMessages[i].message;
+
+    let currentMessageElement = showMessage(runningMessage);
+
+    messageContainer.appendChild(currentMessageElement);
+};
+
+// When we will write new messages and send it it should display:-
+
+let messageInput = document.querySelector(".messageinput");
+
+messageInput.addEventListener("keyup",function(e){
+    let currentValue = messageInput.value;
+    
+    if (currentValue.length > 0){
+        sendBtn.removeAttribute("disabled");
+        sendBtn.addEventListener("click",sendMessage);
+    }else{
+        sendBtn.setAttribute("disabled","true");
+    };
+});
+
+function sendMessage(){
+    let currentInputValue = messageInput.value;
+
+    console.log(currentInputValue);
 }
+
