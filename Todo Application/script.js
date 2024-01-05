@@ -219,13 +219,15 @@ function comparator(recordOne,recordTwo){
 
       let recordTwoStatus = recordTwo.querySelector(".todo-status").textContent;
 
-      if (recordOneStatus == "Completed" && recordTwoStatus == "In Progress"){
-            return 1;
-      }else if (recordOneStatus == "In Progress" && recordTwoStatus == "Completed"){
-            return -1;
-      }else if ((recordOneStatus == "Completed" && recordTwoStatus == "Completed") || (recordOneStatus == "In Progress" && recordTwoStatus == "In Progress")){
-            return -1;
-      };
+      // if (recordOneStatus == "Completed" && recordTwoStatus == "In Progress"){
+      //       return 1;
+      // }else if (recordOneStatus == "In Progress" && recordTwoStatus == "Completed"){
+      //       return -1;
+      // }else if ((recordOneStatus == "Completed" && recordTwoStatus == "Completed") || (recordOneStatus == "In Progress" && recordTwoStatus == "In Progress")){
+      //       return -1;
+      // };
+
+      return recordOneStatus.toLowerCase() < recordTwoStatus.toLowerCase() ? 1 : -1;
 };
 
 function sortRecords(totalRecords){

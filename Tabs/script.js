@@ -4,6 +4,7 @@ let contentList = document.querySelectorAll(".description");
 
 
 headerBtn.addEventListener("click",function(e){
+    
     if (e.target.classList.contains("btn")){
         let selectedCategory = e.target.innerText;
         

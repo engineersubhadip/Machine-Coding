@@ -1,13 +1,8 @@
-let parent = document.querySelector(".row");
-let delBtn = document.querySelector("#del");
 
+let row = document.querySelector(".row");
 
-parent.addEventListener("click",function(e){
+row.addEventListener("click",function(e){
       if (e.target.classList.contains("inner")){
             console.log(e.target);
-            e.target.style.border = "2px solid black";
       }
-      
-});
-
-
+})
