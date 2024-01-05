@@ -8,6 +8,8 @@ let empDetails = document.querySelector("#employee-details"); //right-side
 
 let empForm = document.querySelector(".empForm");
 
+let isSubmitClickable = false; // By default it will be False
+
 function createEmployee(element){
     // Create the Element :-
 
@@ -33,11 +35,22 @@ function createEmployee(element){
     // Adding the inner Text Content:-
 
     name.innerText = element.firstName+" "+element.lastName;
-    employeeHolder.setAttribute("empid",element.id);
+
+    if (element.id != undefined){
+        employeeHolder.setAttribute("empid",element.id);
+        employeeList.push({empID:element.id});
+    }else{
+        let runningId = new ShortUniqueId();
+        runningId = runningId.rnd();
+        element["id"] = runningId;
+        employeeHolder.setAttribute("empid",runningId);
+        employeeList.push({empID:runningId});
+        data.push(element);
+    }
 
     // Returning the Employee Holder:-
 
-    employeeList.push({empID:element.id});
+    // employeeList.push({empID:element.id});
 
     employeeHolder.addEventListener("click",showDetails); // For displaying the Employee Information on the right side
 
@@ -61,19 +74,17 @@ function findTargetEmployee(empID){
 }
 
 function fillEmployeeDetails(empID){
-
     let targetEmployee = findTargetEmployee(empID)[0];
+
     // Create the Elements :-
 
     let h2 = document.createElement("h2");
     let empImage = document.createElement("div");
     let image = document.createElement("img");
     let empName = document.createElement("div");
-    // let span = document.createElement("span");
     let address = document.createElement("div");
     let email = document.createElement("div");
     let cell = document.createElement("div");
-    // let span2 = document.createElement("span");
     let dob = document.createElement("div");
 
     // Adding the Classes :-
@@ -87,9 +98,6 @@ function fillEmployeeDetails(empID){
 
     // Appending the Children :-
     empImage.appendChild(image);
-    // empName.appendChild(span);
-    // cell.appendChild(span2);
-
     empDetails.appendChild(h2);
     empDetails.appendChild(empImage);
     empDetails.appendChild(empName);
@@ -103,11 +111,9 @@ function fillEmployeeDetails(empID){
     h2.innerText = "Employee Details"
     image.src = targetEmployee.imageUrl;
     empName.innerText = `${targetEmployee.firstName.toUpperCase()} ${targetEmployee.lastName.toUpperCase()} (${targetEmployee.age})`;
-    // span.innerText = targetEmployee.age;
     address.innerText = targetEmployee.address;
     email.innerText = targetEmployee.email;
     cell.innerText = `Mobile - ${targetEmployee.contactNumber}`
-    // span2.innerText = targetEmployee.contactNumber;
     dob.innerText = `DOB - ${targetEmployee.dob}`;
 }
 
@@ -183,5 +189,71 @@ addEmployee.addEventListener("click",function(e){
     if (e.target.classList.contains("new-employee-btn")){
         parentContainer.style.display = "none";
         empForm.style.display = "flex";
+
+        // We will first clear out the pre-existing values inside the input fields and disable the submit button.
+        
+        let totalInputFields = document.querySelectorAll(".form-control");
+
+        let submitBtn = document.querySelector(".btn-primary");
+
+        for (let i=0; i<totalInputFields.length; i++){
+            totalInputFields[i].value=""
+        }
+        submitBtn.classList.add("disabled");
+        empForm.addEventListener("input",enterInput);
+    };
+
+});
+
+function enterInput(e){ // This function will enable and disable the SUBMIT button
+
+    if (e.target.classList.contains("form-control")){
+        
+        let submitBtn = document.querySelector(".btn-primary");
+        
+        // At this point we will fetch the list of all the current input fields in the UI:-
+
+        let totalInputFields = document.querySelectorAll(".form-control");
+
+        // We will now try to iterate over each and every input fields and check if all of them are filled up or not:-
+        
+        for (let i=0; i<totalInputFields.length; i++){
+            
+            if (totalInputFields[i].value.length == 0){
+                isSubmitClickable = false;
+                break;
+            }else{
+                isSubmitClickable = true;
+            }
+        }
+
+        if (isSubmitClickable){
+            submitBtn.classList.remove("disabled");
+            submitBtn.addEventListener("click",submitForm)
+        }else{
+            submitBtn.classList.add("disabled");
+        }
     }
-})
+}
+
+function submitForm(event){
+    event.preventDefault(); // Stop the page from reloading
+
+    empForm.style.display = "none";
+
+    let formElement = document.querySelector(".empForm");
+
+    let formData = new FormData(formElement);
+
+    const formObject = {};
+
+    for (let [key,val] of formData){
+        formObject[key] = val;
+    }
+
+    let newEmployee = createEmployee(formObject);
+
+    empContainer.appendChild(newEmployee);
+
+    parentContainer.style.display = "flex";
+}
