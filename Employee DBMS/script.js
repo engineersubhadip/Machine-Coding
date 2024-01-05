@@ -50,8 +50,6 @@ function createEmployee(element){
 
     // Returning the Employee Holder:-
 
-    // employeeList.push({empID:element.id});
-
     employeeHolder.addEventListener("click",showDetails); // For displaying the Employee Information on the right side
 
     icon.addEventListener("click",delRecord); // When the user clicks on the Delete Button
@@ -177,7 +175,7 @@ function delRecord(e){
             fillEmployeeDetails(employeeAtFirst.empID);
         }else{
             empDetails.innerText = "";
-        }
+        };
     };
 };
 
