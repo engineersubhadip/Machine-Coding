@@ -164,7 +164,6 @@ function delRecord(e){
         };
 
         data.splice(indexToBeDeletedDataList,1);
-
         e.target.parentElement.parentElement.remove();
 
         // If I delete an employee we want to show the details of the employee who is currently sitting on the front:-
