@@ -61,7 +61,7 @@ for (let i=0; i<data.length; i++){
 }
 
 function targetContact(e){
-
+        
         let currentContact = undefined;
 
         if (e.target.classList.contains("contact")){
@@ -89,9 +89,13 @@ function targetContact(e){
             };
         };
 
+
         // Firstly we will clear out the existing messages shown inside messageContainer
 
         messageContainer.innerText="";
+
+        let rightSide = document.querySelector("#right-side");
+        rightSide.style.display = "flex"; // Line 97-98 is required for the Search bar functionality. When the user searches for a contact and clicks on them, then we want to display the messages for the particular contact. Line 95 states that we are emptying out the previous content and then displaying the new one
 
         // Now we will iterate through each element of currentContactMessage and call showMessages()
 
@@ -203,3 +207,60 @@ function sendMessage(e){
     sendBtn.setAttribute("disabled","true"); // We are emptying out the sent value from the Input Box so that it does not gets populated in the next contact or the current one. And we are disabling the SEND Button
 }
 
+// Implementation of the Search Functionality :-
+
+let searchBar = document.querySelector(".search-contact");
+
+searchBar.addEventListener("keyup",function(e){
+    let currentValue = searchBar.value;
+    let availableContacts = document.querySelectorAll(".contact"); // List of all the contacts on the left side
+    let rightSide = document.querySelector("#right-side"); // When the user searches for a contact we will not show anything on the right side.
+
+    if (currentValue.length > 0){
+        let runningArr = [];
+        
+        for (let i=0; i<data.length; i++){
+            let currentContactName = data[i].title;
+            let flag = true;
+            for (let j=0; j<currentValue.length; j++){
+                if (currentValue[j] != currentContactName[j]){
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag){
+                runningArr.push(data[i].id);
+            }
+        }
+
+        if (runningArr.length > 0){
+
+            for (let i=0; i<runningArr.length; i++){
+                let currentID = runningArr[i];
+                for (let j=0; j<availableContacts.length; j++){
+                    let runID = availableContacts[j].getAttribute("contact-id");
+
+                    if (currentID == runID){
+                        availableContacts[j].style.display = "flex";
+                    }else{
+                        availableContacts[j].style.display = "none";
+                    };
+                };
+            };
+
+            // We will not show anything on the right side :-
+
+            rightSide.style.display = "none";
+        }
+
+    }
+    else{
+        for (let i=0; i<availableContacts.length; i++){
+            availableContacts[i].style.display = "flex";
+        }
+
+        // We will show everything on the right side :-
+
+        rightSide.style.display = "flex";
+    }
+})
