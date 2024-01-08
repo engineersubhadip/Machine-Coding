@@ -213,6 +213,8 @@ let searchBar = document.querySelector(".search-contact");
 
 searchBar.addEventListener("keyup",function(e){
     let currentValue = searchBar.value;
+    currentValue = currentValue.toLowerCase();
+
     let availableContacts = document.querySelectorAll(".contact"); // List of all the contacts on the left side
     let rightSide = document.querySelector("#right-side"); // When the user searches for a contact we will not show anything on the right side.
 
@@ -220,8 +222,11 @@ searchBar.addEventListener("keyup",function(e){
         let runningArr = [];
         
         for (let i=0; i<data.length; i++){
+
             let currentContactName = data[i].title;
+            currentContactName = currentContactName.toLowerCase();
             let flag = true;
+
             for (let j=0; j<currentValue.length; j++){
                 if (currentValue[j] != currentContactName[j]){
                     flag = false;
