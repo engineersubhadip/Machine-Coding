@@ -12,6 +12,7 @@ html{
     display: flex;
     height:500px;
     width:750px;
+    border-radius: 5px;
 }
 
 #left-side{
