@@ -16,30 +16,33 @@ html{
 
 #left-side{
     flex-basis: 35%;
-    border:2px solid green;
     display: flex;
     flex-direction: column;
-    gap:2rem;
-    background-color: cadetblue;
+    background-color: #8CBEB2;
     overflow-y: auto;
 }
 
 #search-bar input{
+    margin-top: 1rem;
     width:100%;
+    margin-bottom: 2rem;
+    padding:0.25rem;
 }
 
 #contact-list{
     display: flex;
     flex-direction: column;
-    border:2px solid red;
-    
+    gap:1rem;
 }
 
 .contact{
     display: flex;
     height:4rem;
-    border:2px solid black;
     gap:2rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #F3B562;
 }
 
 .contact-image img{
@@ -49,34 +52,40 @@ html{
     object-fit: cover;
 }
 
+.contact:hover{
+    cursor: pointer;
+}
+
 #right-side{
     flex-basis: 65%;
-    border: 2px solid pink;
     display: flex;
     flex-direction: column;
+    
 }
 
-#messagelist{
-    width:100%;
-    border-bottom:2px solid blue;
-    height:90%;
+#messagelist {
+    width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
-    justify-content: end;
-    overflow-y: auto;
+    align-items: flex-end; /* Align messages to the end */
+    gap: 1.5rem;
     background-color: antiquewhite;
+    overflow-y: auto; /* Enable vertical scrollbar */
 }
+
 
 .message{
-    border:2px solid black;
     padding:1rem;
     display: flex;
     flex-wrap: wrap;
     border-radius: 15px;
+    border: 2px solid black;
+    background-color: #F2EBBF;
 }
 
 #send-message{
-    height:10%
+    height:10%;
 }
 
 #send-message input{
