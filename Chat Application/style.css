@@ -73,6 +73,7 @@ html{
     gap: 1.5rem;
     background-color: antiquewhite;
     overflow-y: auto; /* Enable vertical scrollbar */
+    padding:1rem;
 }
 
 
@@ -81,7 +82,7 @@ html{
     display: flex;
     flex-wrap: wrap;
     border-radius: 15px;
-    border: 2px solid black;
+    border: 1px solid #F06060;
     background-color: #F2EBBF;
 }
 
