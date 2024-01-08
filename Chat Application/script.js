@@ -6,6 +6,7 @@ let messageContainer = document.querySelector("#messagelist");
 
 let sendBtn = document.querySelector("#sendBtn");
 
+let currentActiveContact = undefined;
 
 function createContact(element){
 
@@ -65,10 +66,14 @@ function targetContact(e){
 
         if (e.target.classList.contains("contact")){
             currentContact = e.target;
+            currentActiveContact = e.target;
+
         }else if (e.target.classList.contains("imagecontact")){
             currentContact = e.target.parentElement.parentElement;
+            currentActiveContact = e.target.parentElement.parentElement;
         }else{
             currentContact = e.target.parentElement;
+            currentActiveContact = e.target.parentElement;
         }
 
         let currentContactID = currentContact.getAttribute("contact-id");
@@ -147,9 +152,46 @@ messageInput.addEventListener("keyup",function(e){
     };
 });
 
-function sendMessage(){
+function sendMessage(e){
     let currentInputValue = messageInput.value;
 
-    console.log(currentInputValue);
+    // How will we get to know for which contact is clicking on the SEND Button :-
+
+    let currentContact = currentActiveContact;
+    let currentContactID = currentContact.getAttribute("contact-id");
+
+    let currentContactMessages = contactArray[currentContactID-1][currentContactID];
+    
+    currentContactMessages.push({message:currentInputValue});
+
+    // Now for the particular ID we will update the Data File :-
+
+    console.log(currentContactID);
+
+    let targetIndex = undefined;
+
+    for (let i=0; i<data.length; i++){
+        if (data[i].id == currentContactID){
+            targetIndex = i;
+            break;
+        };
+    };
+
+    if (targetIndex != undefined){
+        data[targetIndex].messageList = currentContactMessages; // In the data file we have updated the message list of the contactID
+    }
+
+    messageContainer.innerText = "";
+
+    let updatedMessages = data[targetIndex].messageList;
+
+    for (let i=0; i<updatedMessages.length; i++){ // Now we will iterate through the updated list and print the messages :-
+        
+        let currentMessage = showMessage(updatedMessages[i].message);
+        messageContainer.appendChild(currentMessage);
+    };
+
+    messageInput.value = "";
+
 }
 
