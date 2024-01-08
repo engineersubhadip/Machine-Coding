@@ -205,7 +205,7 @@ function sendMessage(e){
 
     messageInput.value = "";
     sendBtn.setAttribute("disabled","true"); // We are emptying out the sent value from the Input Box so that it does not gets populated in the next contact or the current one. And we are disabling the SEND Button
-}
+};
 
 // Implementation of the Search Functionality :-
 
@@ -263,4 +263,4 @@ searchBar.addEventListener("keyup",function(e){
 
         rightSide.style.display = "flex";
     }
-})
+});
