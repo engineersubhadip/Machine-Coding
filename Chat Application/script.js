@@ -152,21 +152,29 @@ messageInput.addEventListener("keyup",function(e){
     };
 });
 
+
 function sendMessage(e){
+    
     let currentInputValue = messageInput.value;
+    let currentContact = undefined;
 
     // How will we get to know for which contact is clicking on the SEND Button :-
 
-    let currentContact = currentActiveContact;
-    let currentContactID = currentContact.getAttribute("contact-id");
+    if (currentActiveContact == undefined){ // This means that user hasn't clicked on any contact upon landing first time. He just typed in a message and clicked SEND.
+        currentContact = contactList.querySelector(".contact");
+    }else{
+        currentContact = currentActiveContact
+    }
+
+    let currentContactID = undefined;
+    
+    currentContactID = currentContact.getAttribute("contact-id");
 
     let currentContactMessages = contactArray[currentContactID-1][currentContactID];
     
     currentContactMessages.push({message:currentInputValue});
 
     // Now for the particular ID we will update the Data File :-
-
-    console.log(currentContactID);
 
     let targetIndex = undefined;
 
@@ -186,12 +194,12 @@ function sendMessage(e){
     let updatedMessages = data[targetIndex].messageList;
 
     for (let i=0; i<updatedMessages.length; i++){ // Now we will iterate through the updated list and print the messages :-
-        
+
         let currentMessage = showMessage(updatedMessages[i].message);
         messageContainer.appendChild(currentMessage);
     };
 
     messageInput.value = "";
-
+    sendBtn.setAttribute("disabled","true"); // We are emptying out the sent value from the Input Box so that it does not gets populated in the next contact or the current one. And we are disabling the SEND Button
 }
 
