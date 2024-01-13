@@ -13,16 +13,16 @@ body{
 
 .container{
     width:100vw;
-    height:100px;
+    height:50px;
     background-color: antiquewhite;
-    padding:40px;
+    /* padding:40px; */
+    border-radius: 20px;
 }
 
 .blue-loader{
     width:0%;
     height:100%;
     background-color: blue;
-    border-radius: 10px;
 }
 
 .action-btn{
