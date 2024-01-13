@@ -25,4 +25,21 @@ function checkFields(){
     }
     isSubmit = true;
     return isSubmit;
+};
+
+
+function submitForm(event){
+    event.preventDefault();
+
+    let form = document.querySelector("form");
+
+    let formData = new FormData(form);
+
+    let result = {};
+
+    for (let [key,val] of formData.entries()){
+        result[key] = val;
+    }
+
+    console.log(result);
 }
