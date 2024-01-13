@@ -41,4 +41,4 @@ stop.addEventListener("click",function(){
 reset.addEventListener("click",function(){
     stopFilling(timerID);
     progressBar.style.width = `0%`;
-})
+});
