@@ -1,0 +1,33 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin:0;
+    padding:0;
+}
+
+.container{
+    width:100vw;
+    height:100px;
+    background-color: antiquewhite;
+    padding:40px;
+}
+
+.blue-loader{
+    width:0%;
+    height:100%;
+    background-color: blue;
+    border-radius: 10px;
+}
+
+.action-btn{
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    gap:2rem;
+}
