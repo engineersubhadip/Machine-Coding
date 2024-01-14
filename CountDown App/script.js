@@ -27,7 +27,15 @@ function startTimer(){
         }
         milisec.textContent=currValMil;
     },1);
-
 };
 
-// startTimer();
+function stopTimer(timerId){
+    clearInterval(timerId);
+}
+
+function resetTimer(){
+    clearInterval(timerId);
+}
+
+
+
