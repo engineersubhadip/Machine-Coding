@@ -28,18 +28,21 @@ function checkFields(){
 };
 
 
-function submitForm(event){
-    event.preventDefault();
-
-    let form = document.querySelector("form");
-
-    let formData = new FormData(form);
-
-    let result = {};
-
-    for (let [key,val] of formData.entries()){
-        result[key] = val;
+if (isSubmit){
+    function submitForm(event){
+        event.preventDefault();
+    
+        let form = document.querySelector("form");
+    
+        let formData = new FormData(form);
+    
+        let result = {};
+    
+        for (let [key,val] of formData.entries()){
+            result[key] = val;
+        }
+    
+        console.log(result);
     }
-
-    console.log(result);
 }
+
