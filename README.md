@@ -1,2 +1,2 @@
 # Machine Coding
- List of mini projects
+ Maching Coding Problem Statements.
