@@ -38,4 +38,20 @@ function resetTimer(){
 }
 
 
+start.addEventListener("click",function(){
+    start.setAttribute("disabled","true");
+    startTimer();
+});
 
+stop.addEventListener("click",function(){
+    start.removeAttribute("disabled");
+    stopTimer(timerId);
+});
+
+reset.addEventListener("click",function(){
+    start.removeAttribute("disabled");
+    resetTimer(timerId);
+    min.textContent="00";
+    sec.textContent="00";
+    milisec.textContent="00";
+})
