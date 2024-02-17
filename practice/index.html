@@ -1,76 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form onsubmit = "submitForm(event)">
-      <div>
-        <label for="name">First Name:</label>
-        <input class="one" type="text" name="first_name" id="name" />
-      </div>
-
-      <div>
-        <label for="age">Age</label>
-        <input class = "one" type="text" name="age" id="age" />
-      </div>
-      <input class = "submitClass" type="submit" />
-    </form>
-
-    <script>
-
-      // {name : "JAGS"}
-
-      // hm.name
-
-      // let canSubmit = false;
-
-      let ipField = document.querySelectorAll(".one")
-
-      let submitBtn = document.querySelector(".submitClass");
-
-      let canClick = true;
-
-      submitBtn.addEventListener("click",function(e){
-            for (let i=0; i<ipField.length; i++){
-                  let current = ipField[i].value;
-
-                  if (current.length == 0){
-                        window.alert("Fill All the values");
-                        canClick = false;
-                        return;
-                  }
-            }
-
-            canClick = true;
-      })
-
-
-      
-      function submitForm(event){
-            event.preventDefault();
-            // console.log(event);
-
-            if (! canClick){
-                  return ;
-            }
-            let formElement = document.querySelector("form");
-
-            let formData = new FormData(formElement);
-            
-            const formObject = {};
-
-            for (let [key,val] of formData){
-                  formObject[key] = val;
-            }
-
-            console.log(formObject);
-
-            formElement.style.display = "none";
-      }
-
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Change</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container"></div>
+  <button class="start">Start</button>
+  <button class="stop">Stop</button>
+  <script src="./script.js"></script>
+</body>
 </html>
