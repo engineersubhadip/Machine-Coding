@@ -11,6 +11,11 @@ body{
     padding:0;
 }
 
+.toggle-button{
+    background-color: red;
+    color:white;
+}
+
 .part-one {
     width:200px;
     height:200px;
