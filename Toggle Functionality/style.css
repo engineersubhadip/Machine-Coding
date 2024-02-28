@@ -1,0 +1,40 @@
+html{
+    box-sizing: border-box;
+}
+
+*,*::before,*::after{
+    box-sizing: inherit;
+}
+
+body{
+    margin: 0;
+    padding:0;
+}
+
+.part-one {
+    width:200px;
+    height:200px;
+    /* margin-bottom: 4rem; */
+    position: relative;
+    z-index: 1;
+}
+
+.part-one img{
+    height: 100%;
+    width: 100%;
+}
+
+.part-two {
+    width:200px;
+    height:200px;
+    margin-bottom: 4rem;
+    position: fixed;
+    z-index: 2;
+    top: 87px;
+    display: none;
+}
+
+.part-two img{
+    height: 100%;
+    width: 100%;
+}
