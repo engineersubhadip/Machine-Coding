@@ -6,7 +6,6 @@ let isActive = false;
 
 let crossEyeIcon = document.querySelector(".fa-eye-slash");
 
-let eyeIcon = document.querySelector(".fa-eye");
 
 crossEyeIcon.addEventListener("click",function(e){
     if(!isActive){
