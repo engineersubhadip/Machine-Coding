@@ -1,34 +1,39 @@
-let target = document.querySelector(".container");
+console.log("Linked");
 
-let startBtn = document.querySelector(".start");
+let currCount = document.querySelector(".count");
 
-let stopBtn = document.querySelector(".stop");
+let userInput = document.querySelector("input");
 
-let timerID;
+let userBtn = document.querySelector(".button-group");
 
-let transition = false; // Initially there is no transition
-    
-    startBtn.addEventListener("click",function(){ 
-        if (transition == false){ // transition will happen only if the value is false.
-            // startBtn.setAttribute("disabled","true");
-            timerID = setInterval(function(){
-                let compStyle = window.getComputedStyle(target);
-                let currColor = compStyle.backgroundColor;
-                
-                if (currColor === "rgb(255, 0, 0)"){
-                    target.style.backgroundColor = "rgb(0,0,255)";
-                }else{
-                    target.style.backgroundColor = "rgb(255, 0, 0)";
-                }
-        
-            },500);
+// let userReset = document.querySelector(".reset-btn");
+
+let oldVal = 0;
+
+userBtn.addEventListener("click",function(e){
+
+    let currUserVal = Number(userInput.value);
+
+    if(e.target.classList.contains("add-btn")){ // Users clicks on Add Btn
+        if (currUserVal >= 0){
+            oldVal += currUserVal;
+            currCount.innerText = oldVal;
+            userInput.value = 0;
+        }else{
+            window.alert("Just enter a value");
         }
-        transition = true; // Once the setInterval is initiated we set the value as true. Meaning, even if the user again clicks on the Start Button. Since the value of transition is true. So line 12 will never executed
-    });
 
-
-
-stopBtn.addEventListener("click",function(){
-    clearInterval(timerID);
-    transition = false; // Once the user clicks on the Stop Button, then the transition stops. Now if the user clicks on START Button, then line 12 will execute
+    }else if(e.target.classList.contains("sub-btn")){ // User clicks on Sub Btn
+        if (currUserVal >= 0){
+            oldVal -= currUserVal;
+            currCount.innerText = oldVal;
+            userInput.value = 0;
+        }else{
+            window.alert("Just enter a value");
+        }
+    }else if(e.target.classList.contains("reset-btn")){
+        oldVal = 0;
+        currCount.innerText = 0;
+        userInput.value = 0;
+    }
 })
