@@ -11,10 +11,25 @@ body{
     padding:0;
 }
 
-.container{
-    height: 100px;
-    width:100px;
-    background-color: red;
-    border-radius: 50%;
-    margin-bottom: 2rem;
+.parent-container{
+    display: flex;
+    flex-direction: column;
+    padding:30px;
+}
+
+.count{
+    font-size: larger;
+    margin-bottom: 1rem;
+}
+
+.inc-dec{
+    margin-bottom: 1rem;
+}
+.button-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.top{
+    margin-bottom: 1rem;
 }
